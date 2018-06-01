@@ -1,0 +1,62 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "apps": [
+    {
+      "assets": [
+        "assets",
+        "conf",
+        "favicon.ico"
+      ],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      },
+      "index": "index.html",
+      "main": "main.ts",
+      "outDir": "dist",
+      "polyfills": "polyfills.ts",
+      "prefix": "omni",
+      "root": "src",
+      "scripts": [],
+      "serviceWorker": true,
+      "styles": [
+        "styles/styles.scss"
+      ],
+      "test": "test.ts",
+      "testTsconfig": "tsconfig.spec.json",
+      "tsconfig": "tsconfig.app.json"
+    }
+  ],
+  "defaults": {
+    "component": {},
+    "styleExt": "scss"
+  },
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "exclude": "**/node_modules/**",
+      "project": "src/tsconfig.app.json"
+    },
+    {
+      "exclude": "**/node_modules/**",
+      "project": "src/tsconfig.spec.json"
+    },
+    {
+      "exclude": "**/node_modules/**",
+      "project": "e2e/tsconfig.e2e.json"
+    }
+  ],
+  "project": {
+    "name": "omni-marchex-io"
+  },
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  }
+}

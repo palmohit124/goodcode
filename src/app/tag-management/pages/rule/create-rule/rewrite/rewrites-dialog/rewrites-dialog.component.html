@@ -1,0 +1,24 @@
+<div class="rewrites" fxLayout="column">
+  <span class="dialog-close-icon icon-cross" (click)="dialogRef.close(true)"></span>
+  <form [formGroup]="formData" (ngSubmit)="onDialogClose(true)">
+    <div class="rewrites-section">
+      <mat-form-field class="display-block">
+        <input matInput placeholder="Phone" formControlName="value">
+        <mat-error *ngIf="formData.controls.value.errors && formData.controls.value.errors.notValidNumber">
+          {{formData.controls.value.errors.notValidNumber}}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="display-block">
+        <mat-select placeholder="Call Tracking Number" formControlName="ctn">
+          <mat-option *ngFor="let ctn of ctns;" [value]="ctn.e164">
+            {{ctn.e164}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="rewrites__button-section">
+      <button mat-button type="button" (click)="onDialogClose(false)" class="button cancel-button">Cancel</button>
+      <button mat-button type="submit" [ngClass]="{'disabled' : !formData.valid}" [disabled]="!formData.valid" class="button update-button">Update</button>
+    </div>
+  </form>
+</div>

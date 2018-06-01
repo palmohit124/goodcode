@@ -1,0 +1,16 @@
+{
+  "auth": {
+    "accessAllowedTo": [
+      "staff"
+    ]
+  },
+  "baseApiUrl": "https://qa-oceapigw.marchex.com/v3/",
+  "oAuthConfigs": {
+    "redirectUri": "http://localhost/oauth"
+  },
+  "routes": {
+    "routesWithoutNav": [
+      "/customer"
+    ]
+  }
+}

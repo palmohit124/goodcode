@@ -1,0 +1,376 @@
+.refdom {
+  border-radius: 10px;
+  padding: 40px 25px;
+  width: 600px;
+  position: relative;
+  .refdom-section {
+    min-height: 270px;
+  }
+  .add-source-label {
+    padding: 20px 0px;
+  }
+  .add-sources {
+    color: #0070FF;
+    display: inherit;
+    top: -9px;
+    position: relative;
+    font-size: 35px;
+    cursor: pointer;
+  }
+  .sources-list{
+    height: 130px;
+    max-height: 100%;
+    overflow: auto;
+    padding-bottom: 10px;
+    &::-webkit-scrollbar-track {
+			background-color: transparent;
+		}
+		&::-webkit-scrollbar {
+			width: 5px;
+			background-color: transparent;
+		}
+		&::-webkit-scrollbar-thumb {
+			border-radius: 15px;
+			background-color: #D1D4D7;
+			border: 2px solid #D1D4D7;
+		}
+  }
+  .remove-source-icon {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+    color: red;
+  }
+  .mat-form-field.display-block {
+    display: block;
+  }
+  &__button-section {
+    display: flex;
+    margin: auto;
+    margin-right: 0px;
+    padding-top: 30px;
+    justify-content: flex-end;
+    .button {
+      width: 119px;
+      text-align: center;
+      margin-right: 15px;
+      padding: 5px;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+    .mat-button.update-button {
+      background: linear-gradient(to right, #0070FF 0%, #00ACE7 100%);
+      color: white;
+      margin: 0px;
+    }
+    .cancel-button {
+      color: #266df1;
+    }
+    .mat-button-focus-overlay {
+      background: transparent;
+    }
+    .update-button {
+      &.disabled {
+        cursor: default;
+        pointer-events: none;
+        background: #A8A9AA;
+      }
+    }
+  }
+}
+
+.conditions {
+  border-radius: 10px;
+  padding: 40px 25px;
+  width: 600px;
+  position: relative;
+  .conditions-section {
+    min-height: 270px;
+  }
+  &__dialog-close-icon {
+    position: absolute;
+    padding: 4px;
+    font-size: 16px;
+    font-weight: 900;
+    opacity: 0.6;
+    right: 10px;
+    top: 15px;
+    cursor: pointer;
+  }
+  .mat-form-field.display-block {
+    display: block;
+  }
+  &__button-section {
+    display: flex;
+    margin: auto;
+    margin-right: 0px;
+    padding-top: 30px;
+    justify-content: flex-end;
+    .button {
+      width: 119px;
+      text-align: center;
+      margin-right: 15px;
+      padding: 5px;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+    .mat-button.update-button {
+      background: linear-gradient(to right, #0070FF 0%, #00ACE7 100%);
+      color: white;
+      margin: 0px;
+    }
+    .cancel-button {
+      color: #266df1;
+    }
+    .mat-button-focus-overlay {
+      background: transparent;
+    }
+    .update-button {
+      &.disabled {
+        cursor: default;
+        pointer-events: none;
+        background: #A8A9AA;
+      }
+    }
+  }
+}
+
+.lookup {
+  border-radius: 10px;
+  padding: 40px 25px;
+  width: 600px;
+  position: relative;
+  .add-lookup {
+    min-height: 270px;
+    margin: 0px;
+    width: 100%;
+    border-radius: 0px;
+    &__lookupname {
+      font-size: 0.9em;
+      font-weight: 500;
+      margin: 0;
+      padding-top: 5px;
+      color: #9BA2A9;
+    }
+    &__border {
+      box-shadow: none;
+    }
+    &__icon {
+      margin-left: 7px;
+      font-size: 30px;
+      vertical-align: middle;
+      cursor: pointer;
+    }
+    &__buttons {
+      text-align: right;
+    }
+    .icon-tick {
+      color: #1683df;
+      &.disabled {
+        cursor: default;
+        pointer-events: none;
+        color: #A8A9AA;
+      }
+    }
+    .mat-form-field {
+      width: 100%;
+    }
+    mat-form-field {
+      .mat-form-field-underline {
+        background-color: #0070ff;
+      }
+    }
+    &__submit-button {
+      padding: 0px;
+      margin: 0px;
+      border: 0px;
+      background: transparent;
+    }
+  }
+  &__button-section {
+    display: flex;
+    margin: auto;
+    margin-right: 0px;
+    padding-top: 30px;
+    justify-content: flex-end;
+    .button {
+      width: 119px;
+      text-align: center;
+      margin-right: 15px;
+      padding: 5px;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+    .mat-button.update-button {
+      background: linear-gradient(to right, #0070FF 0%, #00ACE7 100%);
+      color: white;
+      margin: 0px;
+    }
+    .cancel-button {
+      color: #266df1;
+    }
+    .mat-button-focus-overlay {
+      background: transparent;
+    }
+    .update-button {
+      &.disabled {
+        cursor: default;
+        pointer-events: none;
+        background: #A8A9AA;
+      }
+    }
+  }
+}
+
+.rewrites {
+  border-radius: 10px;
+  padding: 40px 25px;
+  width: 600px;
+  position: relative;
+  .rewrites-section {
+    min-height: 270px;
+  }
+  .add-rewrites {
+    color: #0070FF;
+    display: inherit;
+    text-align: center;
+    margin-top: -34px;
+    font-size: 44px;
+    cursor: pointer;
+    opacity: 0.93;
+  }
+  .mat-form-field.display-block {
+    display: block;
+  }
+  &__button-section {
+    display: flex;
+    margin: auto;
+    margin-right: 0px;
+    padding-top: 30px;
+    justify-content: flex-end;
+    .button {
+      width: 119px;
+      text-align: center;
+      margin-right: 15px;
+      padding: 5px;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+    .mat-button.update-button {
+      background: linear-gradient(to right, #0070FF 0%, #00ACE7 100%);
+      color: white;
+      margin: 0px;
+    }
+    .cancel-button {
+      color: #276df1;
+    }
+    .mat-button-focus-overlay {
+      background: transparent;
+    }
+    .update-button {
+      &.disabled {
+        cursor: default;
+        pointer-events: none;
+        background: #A8A9AA;
+      }
+    }
+  }
+}
+
+.wizard-header {
+  &__progress-bar {
+    background: #E9E9E9;
+    height: 8px;
+    .fill {
+      background: #0070FF;
+      height: 8px;
+    }
+    .fill-25 {
+      width: 25%;
+    }
+    .fill-50 {
+      width: 50%;
+    }
+    .fill-75 {
+      width: 75%;
+    }
+    .fill-100 {
+      width: 100%;
+    }
+  }
+
+  &__title{
+    h3 {
+      font-size: 1em;
+      margin: 0px;
+      padding: 25px 25px 0px;
+    }
+    h6 {
+      margin: 0;
+      padding: 5px 25px 0px;
+      color: #9BA2A9;
+      font-weight: 500;
+      font-size: 0.75em;
+      span { 
+        color: #000;
+      }
+    }
+  }
+  
+  .wizard-close-icon {
+    padding: 0px;
+    font-size: 16px;
+    font-weight: 900;
+    opacity: 0.6;
+    cursor: pointer;
+    float: right;
+  }
+}
+
+.create-ruleset {
+  .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    padding-top: 5px;
+    font-size: 19px;
+    font-weight: 600;
+  }
+}
+
+.close-wizard-confirmation {
+  padding: 40px 25px;
+  width: 600px;
+  height: 350px;
+  h5 {
+    color: grey;
+    text-align: center;
+    margin-bottom: 150px;
+    font-size: 20px;
+  }
+  &__button-section {
+    display: flex;
+    margin: auto;
+    margin-right: 0px;
+    padding-top: 30px;
+    justify-content: center;
+    .button {
+      width: 119px;
+      text-align: center;
+      margin-right: 15px;
+      padding: 5px;
+      border-radius: 5px;
+      font-size: 1em;
+    }
+    .mat-button {
+      background: linear-gradient(to right, #0070FF 0%, #00ACE7 100%);
+      color: white;
+      margin: 0px;
+    }
+    .cancel-button {
+      background: transparent;
+      color: #266df1;
+    }
+    .mat-button-focus-overlay {
+      background: transparent;
+    }
+  }
+}

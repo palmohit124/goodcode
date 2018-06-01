@@ -1,0 +1,94 @@
+.open-code-snippet {
+  width: 900px;
+  background-color: #fafafb;
+}
+
+.open-code-snippet__code-snippet-header {
+  border-bottom: 1px solid #d6d6d6;
+  padding: 15px;
+  color: #d6d6d6;
+  h4 {
+    margin: 0px;
+    color: black;
+  }
+  h6 {
+    margin: 0px;
+    color: #414141;
+    font-weight: 100;
+    opacity: 0.7;
+  }
+  .cross-icon {
+    cursor: pointer;
+    span {
+      margin: 10px 0px 0px 70px;
+      font-size: 15px;
+      font-weight: bolder;
+      color: #a09696;
+    }
+  }
+}
+
+.open-code-snippet__code-snippet-content {
+  background: #F5F5F5;
+  padding: 20px;
+  text-align: left;
+  .copy-snippet-section {
+    color: #929292;
+    border: none;
+    padding: 5px;
+    line-height: 35px;
+    background: transparent;
+    font-size: 14px;
+    font-weight: 500;
+    height: 400px;
+    width: 740px;
+    text-align: left;
+    overflow: hidden;
+    outline: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    margin-top: -50px;
+    resize: none;
+  }
+  button {
+    box-shadow: none;
+    color: #424446;
+    font-weight: bold;
+    border: 1px solid #4D9BFF;
+    border-radius: 5px;
+    height: 35px;
+    width: 130px;
+    margin: 0px;
+  }
+  .copy-snippet-button {
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: right;
+  }
+  
+}
+
+
+/* iPad [portrait + landscape] */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .open-code-snippet__code-snippet-header {
+    .cross-icon {
+      span {
+        margin: 10px 0px 0px 40px;
+      }
+    }
+  }
+  .open-code-snippet__code-snippet-content {
+    .copy-snippet-section {
+      height: 200px;
+      margin-top: 10px;
+      width: 550px;
+      font-size: 11px;
+    }
+    .open-code-snippet {
+      width: 800px;
+    }
+  }
+}

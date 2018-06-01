@@ -1,0 +1,53 @@
+.search-section {
+  height: 40px;
+
+  .input-with-icon {
+    border: 1px solid #e4e5e9;
+    border-right: none;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: 0.875em;
+    font-family: RalewayLight, 'Trebuchet MS';
+    font-weight: bold;
+    padding: 10px 20px 10px 15px;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: #b6bbc4;
+      font-size: 0.95em;
+      font-family: RalewayLight, 'Trebuchet MS';
+      font-weight: bold;
+    }
+    &::-moz-placeholder { /* Firefox 19+ */
+      color: #bdbdbd;
+      font-size: 0.95em;
+      font-family: RalewayLight, 'Trebuchet MS';
+      font-weight: bold;
+    }
+    &:-ms-input-placeholder { /* IE 10+ */
+      color: #bdbdbd;
+      font-size: 0.95em;
+      font-family: RalewayLight, 'Trebuchet MS';
+      font-weight: bold;
+    }
+    &:-moz-placeholder { /* Firefox 18- */
+      color: #bdbdbd;
+      font-size: 0.95em;
+      font-family: RalewayLight, 'Trebuchet MS';
+      font-weight: bold;
+    }
+  }
+
+  .input-icon {
+    border: 1px solid #e4e5e9;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-left: none;
+    background-color: #ffffff;
+    color: #bdbdbd;
+    padding: 11px;
+  }
+}

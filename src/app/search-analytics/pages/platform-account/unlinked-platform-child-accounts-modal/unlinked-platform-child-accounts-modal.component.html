@@ -1,0 +1,51 @@
+<div class="link-platform-child-account" fxLayout="column" fxLayoutAlign=" none">
+  <div>
+    <div fxFlex="50" class="text-align-left">
+      <img class="text-align-left" src="assets/logo/marchex-logo-modal.png">
+    </div>
+    <div fxFlex="50" class="text-align-right close-section">
+      <img (click)="dialogRef.close()" class="text-align-left close-button" src="assets/images/customer/cross.png">
+    </div>
+  </div>
+  <div class="header">
+    <h3 class="header--text display-inline">
+      Link Child Accounts
+    </h3>
+  </div>
+  <omni-search (search)="search($event)" class="account-searchbar"></omni-search>
+  <div class="account">
+    <div class="message-section">
+      <h4 class="display-inline" *ngIf="(platformAccountState$|async).unlinkedLoaded && !(platformAccountState$|async).unlinkedChildAccounts.total_items">There is no linked child platform account</h4>
+      <h4 class="display-inline" *ngIf="(platformAccountState$|async).unlinkedloading && !(platformAccountState$|async).unlinkedChildAccounts.total_items">Fetching unlinked child platform accounts</h4>
+    </div>
+    <div fxLayout="column" fxLayoutAlign=" none" class="account__table">
+      <div *ngFor="let account of (platformAccountState$|async).unlinkedChildAccounts.children; let i = index" class="account__table__row account__table__row--child-border"
+        [ngClass]="{'account__table__row--child-border': i != 0}">
+        <div class="account__table-padding">
+          <div fxFlex="20" fxFlexAlign="center">
+            <mat-checkbox [checked]="isSelectedChildAccount(account.platformId)" (change)="onChildAccountSelect(account.platformId, $event.checked)"></mat-checkbox>
+          </div>
+          <div fxFlex="60">
+            <h6 class="display-inline">Account Name</h6>
+            <h5 class="account__table-block">{{account.name}}</h5>
+          </div>
+          <div fxFlex="20">
+            <h6 class="display-inline">Account ID</h6>
+            <h5 class="account__table-block">{{account.platformId}}</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="account-body__footer">
+    <div class="account__pagination">
+      <mat-paginator *ngIf="(platformAccountState$|async).unlinkedChildAccounts.total_items > limit" [length]="(platformAccountState$|async).unlinkedChildAccounts.total_items"
+        [pageSize]="limit" [pageIndex]="offset" (page)="paginateChild($event)"></mat-paginator>
+    </div>
+    <div class="text-align-right button-section" *ngIf="(platformAccountState$|async).unlinkedChildAccounts.total_items">
+      <button mat-button class="onboard-button" (click)="linkChildAccountsInit()" [disabled]="selectedPlatformAccounts.length <= 0">
+        <h4>Link Accounts</h4>
+      </button>
+    </div>
+  </div>
+</div>

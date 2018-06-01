@@ -1,0 +1,48 @@
+<mat-card>
+  <div class="report-settings" fxLayout="column" fxLayoutAlign="none">
+    <omni-card-header [headerText]="'Report Settings'"></omni-card-header>
+    <div class="report-settings__form form">
+      <form [formGroup]="formData" (ngSubmit)="updateReport(formData.value)" #reportSettings="ngForm" fxLayout="column" fxLayoutAlign=" none">
+        <mat-form-field class="form__timezone-section">
+          <mat-select placeholder="Timezone" formControlName="timezone">
+            <mat-optgroup *ngFor="let timeZoneObj of tzOffsetList.timezoneOffsets" [label]="timeZoneObj.name">
+              <mat-option *ngFor="let timeZone of timeZoneObj.timezones" [value]="timeZone">
+                {{ timeZone }}
+              </mat-option>
+            </mat-optgroup>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="form__duration-section">
+          <input matInput type="number" placeholder="Call Duration Threshold (seconds)" formControlName="callDuration">
+        </mat-form-field>
+        <mat-slide-toggle class="form__click-to-call" [labelPosition]="'before'" formControlName="clickToCall">
+          <h4 class="form__click-to-call__text">Click to Call Only</h4>
+        </mat-slide-toggle>
+        <mat-form-field class="form__ctn-section">
+          <input matInput type="tel" placeholder="Page Default CTN" formControlName="defaultCTN">
+        </mat-form-field>
+        <mat-form-field class="form__conversion-section">
+          <mat-select placeholder="Conversion Source" formControlName="conversionSource">
+            <mat-option [value]="'None'">
+              None
+            </mat-option>
+            <mat-option [value]="'External'">
+              External
+            </mat-option>
+            <mat-option [value]="'Internal'">
+              Internal
+            </mat-option>
+            <mat-option [value]="'Modeled'">
+              Modeled
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="form__button-section text-align-right">
+          <button mat-button class="submit-button" [ngClass] ="{'disabled' : !formData.valid}">
+            <h4 class="display-inline">Save Changes</h4>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</mat-card>

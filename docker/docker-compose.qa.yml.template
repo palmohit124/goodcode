@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  oce-analytics-ui:
+    hostname: "{{.Node.Hostname}}"
+    image: qa-toolsnexus.marchex.com:5000/oce-analytics-ui:latest
+    ports:
+      - "80:80"
+    deploy:
+      replicas: 3
+      resources:
+        limits:
+          cpus: '1.00'
+          memory: 250m
+        reservations:
+          cpus: '0.50'
+          memory: 50m
+      update_config:
+        parallelism: 2
+        delay: 10s
+      restart_policy:
+        condition: on-failure
+    configs:
+      - source: client-config-{{RELEASE_VERSION}}
+        target: /usr/share/nginx/html/conf/client-config.json
+
+configs:
+  client-config-{{RELEASE_VERSION}}:
+    file: ./docker/client-config.qa.json

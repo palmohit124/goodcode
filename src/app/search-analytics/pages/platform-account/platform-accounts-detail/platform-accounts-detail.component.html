@@ -1,0 +1,67 @@
+<div class="platform-account-deatils">
+  <div class="back-page-link back-page-link" routerLink="/search-analytics">
+    <span class="icon-arrow-left icon-font"></span>
+    <h6 class="display-inline">Back to Previous Page</h6>
+  </div>
+  <mat-card class="parent-section">
+    <omni-card-header [headerText]="'Parent Account'" [buttonText]="'Link Account'" [buttonDisabled]="(platformAccountState$|async).linkedAccounts.parent"
+      (action)="linkParentAccount()">
+    </omni-card-header>
+    <div class="account">
+      <div class="message-section">
+        <h4 *ngIf="(platformAccountState$|async).loaded && !(platformAccountState$|async).linkedAccounts.parent"
+          class="display-inline">There are no linked platform accounts</h4>
+      </div>
+      <div class="account__table" *ngIf="(platformAccountState$|async).linkedAccounts.parent">
+        <div class="account__table-padding">
+          <div fxFlex="45" class="">
+            <h6 class="display-inline">Name</h6>
+            <h5 class="account__table-block">{{(platformAccountState$|async).linkedAccounts.parent.name}}</h5>
+          </div>
+          <div fxFlex="45">
+            <h6 class="display-inline">ID</h6>
+            <h5 class="account__table-block">{{(platformAccountState$|async).linkedAccounts.parent.platformId}}</h5>
+          </div>
+          <div fxFlex="10" class="parent-account__table__link-section">
+            <a target="mca" class="account__table__link-section--link" href="https://www.marchex.io/account/admin?acc={{(platformAccountState$|async).linkedAccounts.parent.platformId}}">
+              <h6 class="display-inline">Open in MCA</h6>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+  <mat-card class="child-section" *ngIf="(platformAccountState$|async).linkedAccounts.parent">
+    <omni-card-header [headerText]="'Child Accounts'" [buttonText]="'Link Account'" (action)="linkChildAccount()"></omni-card-header>
+    <div class="account">
+      <div class="message-section">
+        <h4 *ngIf="(platformAccountState$|async).loaded && (platformAccountState$|async).linkedAccounts.total_items <= 0"
+          class="display-inline">There is no linked child platform accounts</h4>
+      </div>
+      <div fxLayout="column" fxLayoutAlign=" none" class="account__table">
+        <div *ngFor="let account of (platformAccountState$|async).linkedAccounts.children; let i = index" class="account__table__row account__table__row--child-border"
+          [ngClass]="{'account__table__row--child-border': i != 0}">
+          <div class="account__table-padding">
+            <div fxFlex="45">
+              <h6 class="display-inline">Name</h6>
+              <h5 class="account__table-block">{{account.name}}</h5>
+            </div>
+            <div fxFlex="45">
+              <h6 class="display-inline">ID</h6>
+              <h5 class="account__table-block">{{account.platformId}}</h5>
+            </div>
+            <div fxFlex="10" class="child-account__table__link-section">
+              <a target="mca" href="https://www.marchex.io/account/admin?acc={{account.platformId}}" class="account__table__link-section--link">
+                <h6 class="display-inline">Open in MCA</h6>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="account__pagination" *ngIf="(platformAccountState$|async).linkedAccounts.total_items > limit">
+      <mat-paginator [length]="(platformAccountState$|async).linkedAccounts.total_items" [pageSize]="limit" [pageIndex]="pageIndex"
+        (page)="paginate($event)"></mat-paginator>
+    </div>
+  </mat-card>
+</div>

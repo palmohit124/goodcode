@@ -1,0 +1,72 @@
+<div class="customer-list" fxLayout="column" fxLayoutAlign="start center">
+  <div class="search-section content-width">
+    <div>
+      <input fxFlex class="input-with-icon" placeholder="Enter Customer Name" [formControl]="term">
+      <span class="input-icon">
+        <span class="icon-search-analytics"></span>
+      </span>
+    </div>
+  </div>
+  <div class="filter-section">
+    <button class="all" (click)="changeFilter('all')" [ngClass]="filter == 'all' ? 'selected' : ''">
+      <h6 class="display-inline">All</h6>
+    </button>
+    <button class="active" (click)="changeFilter('active')" [ngClass]="filter == 'active' ? 'selected' : ''">
+      <h6 class="display-inline">Active</h6>
+    </button>
+    <button class="inactive" (click)="changeFilter('inactive')" [ngClass]="filter == 'inactive' ? 'selected' : ''">
+      <h6 class="display-inline">Inactive</h6>
+    </button>
+  </div>
+  <div class="list-section content-width">
+    <div class="list-header" fxLayout="row">
+      <div fxFlex="50" class="sorting-section text-align-left">
+        <h6 class="display-inline">Sorting Order: </h6>
+        <button mat-button [matMenuTriggerFor]="sortingMenu">
+          <h6 class="display-inline">{{sortOrderAscending  ? 'A - Z' : 'Z - A'}}</h6>
+        </button>
+        <mat-menu #sortingMenu="matMenu">
+          <button mat-menu-item (click)="orderBy(true)" class="sorting-menu-item">
+            <h6 class="display-inline">A - Z</h6>
+          </button>
+          <button mat-menu-item (click)="orderBy(false)" class="sorting-menu-item">
+            <h6 class="display-inline">Z - A</h6>
+          </button>
+        </mat-menu>
+      </div>
+      <div fxFlex="50" class="text-align-right">
+        <button mat-fab color="primary" class="add-customer" (click)="openCreateCustomerModal()">
+          <span class="icon-add-new-customer"></span>
+        </button>
+      </div>
+    </div>
+    <mat-card *ngFor="let c of customerState.customers.customers">
+      <div fxFlex="50" class="text-align-left customer-name-section" [ngClass]="c.status == 'inactive' ? 'inactive' : ''" (click)="selectCustomer(c)">
+        <span class="content-upper">
+          <h6 class="display-inline">{{c.status == 'active' ? 'Active' : 'Inactive'}}</h6>
+        </span>
+        <br>
+        <span class="content-main">
+          <h5 class="text display-inline">{{c.name}}</h5>
+        </span>
+      </div>
+      <div fxFlex="50" [ngClass]="c.status == 'inactive' ? 'inactive' : ''">
+        <div class="services-section text-align-right">
+          <span class="icon-search-analytics service-icon active" (click)="selectCustomer(c)"></span>
+          <span class="icon-display-analytics service-icon"></span>
+          <span class="icon-audience-analytics service-icon"></span>
+          <span class="icon-conversion-UI service-icon"></span>
+        </div>
+      </div>
+    </mat-card>
+    <mat-card *ngIf="customerState.loading && !customerState.customers.total_items">
+      <h4 class="display-inline">Fetching Customers</h4>
+    </mat-card>
+    <mat-card *ngIf="customerState.loaded && !customerState.customers.total_items">
+      <h4 class="display-inline">No customer found</h4>
+    </mat-card>
+  </div>
+  <div class="pagination" *ngIf="customerState.loaded && customerState.customers.total_items > 10">
+    <mat-paginator [length]="customerState.customers.total_items" [pageSizeOptions]="[10, 20, 50]" [pageSize]="limit" [pageIndex]="pageIndex" (page)="paginate($event)"></mat-paginator>
+  </div>
+</div>

@@ -1,0 +1,171 @@
+<div *ngIf="showWizardContent">
+  <div [ngSwitch]="ruleCreateStep" class="create-ruleset">
+
+    <div class="wizard-header">
+      <div class="wizard-header__progress-bar">
+        <div class="fill {{progressbarClass}}"></div>
+      </div>
+      <div class="wizard-header__title">
+        <h3>
+          {{pageTitle}}
+          <span class="wizard-close-icon icon-cross" (click)="dialogClose()"></span>
+        </h3>
+        <h6 class="breadcrumb">
+          {{breadcrumb}}
+          <span>{{currentStepBreadcrumb}}</span>
+        </h6>
+      </div>
+    </div>
+
+    <!-- Step - 1 - Add Refdom -->
+    <div *ngSwitchCase="'refdom'" class="refdom" fxLayout="column">
+      <mat-form-field class="display-block">
+        <mat-select [(ngModel)]="domain">
+          <mat-option [value]="'any'" [disabled] ='rulesetData.disabledAny'>
+            Any
+          </mat-option>
+          <mat-option [value]="'specific'">
+            Specific
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <form [formGroup]="RefdomFormData" *ngIf="domain == 'specific'">
+        <div class="refdom-section">
+          <mat-form-field class="display-block">
+            <input matInput placeholder="Domain Name" formControlName="domain" (blur)="trimInputDomain(RefdomFormData.value)">
+            <mat-error *ngIf="RefdomFormData.controls.domain.errors && RefdomFormData.controls.domain.errors.alphaNumericOnly">
+              {{RefdomFormData.controls.domain.errors.alphaNumericOnly}}
+            </mat-error>
+            <mat-error *ngIf="RefdomFormData.controls.domain.errors && RefdomFormData.controls.domain.errors.lengthError">
+              {{RefdomFormData.controls.domain.errors.lengthError}}
+            </mat-error>
+          </mat-form-field>
+          <div class="add-source-label">
+            <span fxLayout="row" >
+             <div><h4 class="display-inline">Domain Sources</h4></div>
+             <div fxFlex></div>
+             <div><span (click)="addSource()" class="icon icon-plus add-sources "></span></div>
+            </span>
+          </div>
+          <div class="sources-list" cdkScrollable>
+            <div formArrayName="sources" *ngFor="let item of RefdomFormData.get('sources').controls; let i = index;">
+              <div [formGroupName]="i">
+                <mat-form-field class="display-block">
+                  <input matInput placeholder="Source {{i+1}}" formControlName="source" name="sources{{i}}" [value]="item.controls.source.value">
+                  <mat-error *ngIf="item.controls.source.errors && item.controls.source.errors.notValidUrl">
+                    {{item.controls.source.errors.notValidUrl}}
+                  </mat-error>
+                  <mat-error *ngIf="item.controls.source.errors && item.controls.source.errors.lengthError">
+                    {{item.controls.source.errors.lengthError}}
+                  </mat-error>
+                  <span *ngIf="i!==0" class="remove-source-icon icon-delete" (click)="removeSource(i)"></span>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="refdom__button-section">
+          <button mat-button type="button" (click)="dialogClose()" class="button cancel-button">Cancel</button>
+          <button mat-button type="button" [ngClass]="{'disabled' : !RefdomFormData.valid}" [disabled]="!RefdomFormData.valid" (click)="submitForm('refdom',RefdomFormData.value, false);setStep('condition', 'Condition')"
+            class="button update-button">Next</button>
+        </div>
+      </form>
+      <div class="refdom__button-section" *ngIf="domain == 'any'">
+        <button mat-button type="button" (click)="dialogClose()" class="button cancel-button">Cancel</button>
+        <button mat-button type="button" (click)="submitForm('refdom','any', false);setStep('condition', 'Condition')" class="button update-button">Next</button>
+      </div>
+    </div>
+
+    <!-- Step - 2 - Add Condition -->
+    <div *ngSwitchCase="'condition'" class="conditions" fxLayout="column">
+      <form [formGroup]="ConditionsFormData">
+        <div class="conditions-section">
+          <mat-form-field class="display-block">
+            <mat-select placeholder="Source" formControlName="source">
+              <mat-option *ngFor="let source of conditionSources" [value]="source.key" [disabled]="isSourceDisabled(source.key)">
+                {{ source.value }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="display-block" *ngIf="ConditionsFormData.controls.source.value!=='css'">
+            <input matInput placeholder="{{ConditionsFormData.controls.source.value === 'url' ? 'Parameter Name' : 'Cookie Name' }}"
+              formControlName="searchParameters" (blur)="trimInputSearchParameters(ConditionsFormData.value)">
+            <mat-error *ngIf="ConditionsFormData.controls.searchParameters.errors && ConditionsFormData.controls.searchParameters.errors.alphaNumericOnly">
+              {{ConditionsFormData.controls.searchParameters.errors.alphaNumericOnly}}
+            </mat-error>
+            <mat-error *ngIf="ConditionsFormData.controls.searchParameters.errors && ConditionsFormData.controls.searchParameters.errors.lengthError">
+              {{ConditionsFormData.controls.searchParameters.errors.lengthError}}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="conditions__button-section">
+          <button mat-button type="button" *ngIf="!isAddCondition" (click)="setStep('refdom', 'Refdom')" class="button cancel-button">Back</button>
+          <button mat-button type="button" [ngClass]="{'disabled' : !ConditionsFormData.valid}" [disabled]="!ConditionsFormData.valid"
+            class="button update-button" (click)="submitForm('condition',ConditionsFormData.value,false);setStep('lookup', 'Lookup')">Next</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Step - 3 - Add Lookup -->
+    <div *ngSwitchCase="'lookup'" class="lookup" fxLayout="column">
+      <form [formGroup]="LookupsFormData" #addLokupForm="ngForm" (ngSubmit)="setLookupName(LookupsFormData.value.lookupName)">
+        <div class="add-lookup">
+          <div fxFlex="100">
+            <mat-form-field>
+              <input matInput class="lookup-name" formControlName="lookupName" (blur)="trimInputLookupname(LookupsFormData.value)" placeholder="Lookup Name">
+              <mat-error *ngIf="LookupsFormData.controls.lookupName.errors && LookupsFormData.controls.lookupName.errors.alphaNumericOnly">
+                {{LookupsFormData.controls.lookupName.errors.alphaNumericOnly}}
+              </mat-error>
+              <mat-error *ngIf="LookupsFormData.controls.lookupName.errors && LookupsFormData.controls.lookupName.errors.lengthError">
+                {{LookupsFormData.controls.lookupName.errors.lengthError}}
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="lookup__button-section">
+          <button mat-button type="button" *ngIf="!isAddLookup" (click)="setStep('condition', 'Condition')" class="button cancel-button">Back</button>
+          <button mat-button type="button" [ngClass]="{'disabled' : !LookupsFormData.valid}" [disabled]="!LookupsFormData.valid" class="button update-button"
+            (click)="submitForm('lookup',LookupsFormData.value,false);setStep('rewrite', 'Rewrite')">Next</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Step - 4 - Add Rewrite -->
+    <div *ngSwitchCase="'rewrite'" class="rewrites" fxLayout="column">
+      <form [formGroup]="RewritesFormData" #rewritesForm="ngForm">
+        <div class="rewrites-section">
+          <mat-form-field class="display-block">
+            <input matInput placeholder="Phone" formControlName="value">
+            <mat-error *ngIf="RewritesFormData.controls.value.errors && RewritesFormData.controls.value.errors.notValidNumber">
+              {{RewritesFormData.controls.value.errors.notValidNumber}}
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="display-block">
+            <mat-select placeholder="Call Tracking Number" formControlName="ctn">
+              <mat-option *ngFor="let callTrackingNumber of callTrackingNumbers" [value]="callTrackingNumber.e164">
+                {{ callTrackingNumber.e164 }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="rewrites__button-section">
+          <button mat-button type="button" *ngIf="!isAddRewrite" (click)="setStep('lookup', 'Lookup')" class="button cancel-button">Back</button>
+          <button mat-button type="button" [ngClass]="{'disabled' : !RewritesFormData.valid}" [disabled]="!RewritesFormData.valid"
+            class="button update-button" (click)="submitForm('rewrite',RewritesFormData.value, true);">Done</button>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<div class="close-wizard-confirmation" *ngIf="!showWizardContent">
+  <h5>
+    Do you really want to close the wizard?
+  </h5>
+  <div class="close-wizard-confirmation__button-section">
+    <button mat-button type="button" (click)="showWizardContent=false; closeDialouge=true; dialogClose();" class="button">Yes</button>
+    <button mat-button type="button" (click)="showWizardContent=true; closeDialouge=false;" class="button cancel-button">No</button>
+  </div>
+</div>

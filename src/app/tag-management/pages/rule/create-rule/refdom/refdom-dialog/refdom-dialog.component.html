@@ -1,0 +1,61 @@
+<div class="refdom" fxLayout="column">
+  <span class="dialog-close-icon icon-cross" (click)="dialogRef.close(true)"></span>
+  <mat-form-field class="display-block">
+    <mat-select [(ngModel)]="domain">
+      <mat-option [value]="'any'" [disabled] = "data.disabledAny" >
+        Any
+      </mat-option>
+      <mat-option [value]="'specific'">
+        Specific
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <form [formGroup]="formData" *ngIf="domain == 'specific'" (ngSubmit)="submitForm(true)">
+    <div class="refdom-section">
+      <mat-form-field class="display-block">
+        <input matInput placeholder="Domain Name" formControlName="domain" (blur)="trimInput(formData.value)">
+        <mat-error *ngIf="formData.controls.domain.errors && formData.controls.domain.errors.alphaNumericOnly">
+          {{formData.controls.domain.errors.alphaNumericOnly}}
+        </mat-error>
+        <mat-error *ngIf="formData.controls.domain.errors && formData.controls.domain.errors.lengthError">
+          {{formData.controls.domain.errors.lengthError}}
+        </mat-error>
+      </mat-form-field>
+      <div class="add-source-label">
+        <span fxLayout="row">
+          <div>
+            <h4 class="display-inline">Domain Sources</h4>
+          </div>
+          <div fxFlex></div>
+          <div>
+            <span (click)="addSource()" class="icon icon-plus add-sources "></span>
+          </div>
+        </span>
+      </div>
+      <div class="sources-list" cdkScrollable>
+        <div formArrayName="sources" *ngFor="let item of formData.get('sources')['controls']; let i = index;">
+          <div [formGroupName]="i">
+            <mat-form-field class="display-block">
+              <input matInput placeholder="Source {{i+1}}" formControlName="source" name="sources{{i}}" [value]="item.controls.source.value">
+              <mat-error *ngIf="item.controls.source.errors && item.controls.source.errors.notValidUrl">
+                {{item.controls.source.errors.notValidUrl}}
+              </mat-error>
+              <mat-error *ngIf="item.controls.source.errors && item.controls.source.errors.lengthError">
+                {{item.controls.source.errors.lengthError}}
+              </mat-error>
+              <span *ngIf="i!==0" class="remove-source-icon icon-delete" (click)="removeSource(i)"></span>
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="refdom__button-section">
+      <button mat-button type="button" (click)="submitForm(false)" class="button cancel-button">Cancel</button>
+      <button mat-button type="submit" [ngClass]="{'disabled' : !formData.valid}" [disabled]="!formData.valid" class="button update-button">Update</button>
+    </div>
+  </form>
+  <div class="refdom__button-section" *ngIf="domain == 'any'">
+    <button mat-button type="button" (click)="submitForm(false)" class="button cancel-button">Cancel</button>
+    <button mat-button type="submit" class="button update-button" (click)="submitForm(true)">Update</button>
+  </div>
+</div>

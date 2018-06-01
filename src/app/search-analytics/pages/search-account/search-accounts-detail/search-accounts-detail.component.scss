@@ -1,0 +1,116 @@
+.search-account-deatils {
+  mat-card {
+    &.onboard-account-card { 
+      border: solid 1px #DADADA;
+      box-shadow: 0 0px 1px 0px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+      border-radius: 5px;
+      padding: 0px;
+      margin-bottom: 20px;
+
+      .mat-paginator-page-size {
+        display: none;
+      }
+
+      .search-account-section {
+        display: inline-flex;
+        background-color: #FAFAFA;
+        border-left: solid 1px #C1C1C2; 
+  
+        .search-account-body {
+          padding: 20px;
+
+          &__section {
+            min-height: 275px;
+          }
+  
+          &--text {
+            color: #38B7EC;
+            font-size: 15px;
+            display: inline;
+          }
+  
+          &--integration-text {
+            display: inline;
+          }
+  
+          &__searchbar {
+            width: 80%;
+            margin: auto;
+            padding-top: 25px;
+          }
+  
+          &__account-list {
+            color: #bfbdbd;
+
+            .account-list {
+
+              &__row {
+                padding-top: 15px;
+                padding-bottom: 15px;
+                
+                &--border {
+                  border-top: solid 1px #EFECEC;
+                }
+
+                &__checkbox-block {
+                  padding-top: 10px;
+                  padding-left: 20px;
+                }
+
+                &--item {
+                  margin: auto;
+                  color: #545454;
+                }
+              }
+            }
+          }
+
+          &__message-section {
+            text-align: center;
+            color: #757373;
+            margin-top: 20px;
+          }
+
+          &__footer-section {
+
+            .pagination-section {
+              width: 200px;
+              margin: auto;
+              margin-right: 0px;
+              min-height: 50px;
+              
+              .mat-paginator {
+                min-height: 50px;
+                background-color: #FAFAFA;
+                
+                .mat-paginator-page-size {
+                  display: none;
+                }
+            
+                .mat-paginator-range-label {
+                  margin: 0 10px;
+                }
+              }
+            }
+
+            .button-section {
+              margin-top: 10px;
+              
+              .mat-button {
+                line-height: 10px;
+              }
+        
+              .onboard-button {
+                background: linear-gradient(to right, #6600ff 0%, #05a5e9 100%);
+                color: white;
+                width: 170px;
+                border-radius: 3px;
+                height: 45px;
+              }
+            }
+          }   
+        }
+      }
+    }
+  }
+}

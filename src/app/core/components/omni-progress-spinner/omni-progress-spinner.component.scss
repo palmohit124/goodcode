@@ -1,0 +1,11 @@
+.progress-spinner {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  padding-top: 47vh;
+  padding-left: 47vw;
+  background-color: rgba(173, 173, 173, 0.3);
+}

@@ -1,0 +1,13 @@
+mat-card {
+  
+  &.search-campaigns {
+    padding: 15px 0px 0px 0px;
+    margin-bottom: 30px; 
+  }
+
+  .search-campaigns {
+    &__devider-line {
+      border: .5px solid #E5E5E5;
+    }
+  }
+}

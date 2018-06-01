@@ -1,0 +1,9 @@
+version: '3.3'
+
+services:
+  oce-analytics-ui:
+    image: oce-analytics-ui:latest
+    ports:
+      - "80:80"
+    volumes:
+      - "./client-config.dev.json:/usr/share/nginx/html/conf/client-config.json"

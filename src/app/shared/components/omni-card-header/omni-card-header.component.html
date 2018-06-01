@@ -1,0 +1,13 @@
+<div fxLayout="row" class="card-header-pattern">
+  <div class="header-text" *ngIf="headerText">
+    <h2 [attr.id]="headerId ? headerId : null" class="header-text-content display-inline">
+      {{headerText}}
+    </h2>
+  </div>
+  <div fxFlex class="header-line-section text-align-right">
+    <button [attr.id]="buttonId ? buttonId : null" *ngIf="buttonText" class="details-button" [ngClass]="{'disable' : buttonDisabled}" (click)="action.emit()" >
+      <span *ngIf="iconClass" class="{{iconClass}}"></span>
+      <h6 class="display-inline">{{buttonText}}</h6>
+    </button>
+  </div>
+</div>

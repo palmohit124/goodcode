@@ -1,0 +1,13 @@
+<div class="confirmation" fxLayout="row">
+  <div fxFlex='15' class="confirmation-icon-section">
+    <span class="icon-delete delete-icon" fxFlexAlign="auto"></span>
+  </div>
+  <div fxFlex='60' class="confirmation-message-section">
+    <h5 class="display-inline title-text">{{data.title}}</h5>
+    <h5 class="content-text">{{data.content}}</h5>
+  </div>
+  <div fxFlex='33' class="confirmation-button-section">
+    <div (click)="dialogRef.close(true)" class="button delete-button">Yes</div>
+    <div (click)="dialogRef.close(false)" class="button cancel-button">No</div>
+  </div>
+</div>

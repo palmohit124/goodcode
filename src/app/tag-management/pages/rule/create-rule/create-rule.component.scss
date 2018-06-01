@@ -1,0 +1,212 @@
+.create-rule-page-wrapper {
+  padding: 20px 0;
+  width: 70%;
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    width: 90%;
+    h5 {
+      font-size: 12px;
+    }
+  }
+}
+
+.hide {
+  visibility: hidden;
+}
+
+.create-rule {
+  &__back-page-link {
+    margin-top: 30px;
+    color: #808991;
+    font-size: 12px;
+    outline: none;
+  }
+  .back-page-link {
+    .back-link {
+      cursor: pointer;
+      &:focus {
+        outline: none;
+      }
+    }
+    &__icon-font {
+      vertical-align: middle;
+      font-size: 20px;
+      margin-left: -7px;
+    }
+  }
+  mat-card.rule-header.mat-card {
+    box-shadow: none;
+    padding: 30px 0px 0px;
+  }
+  &__rule-header {
+    .rule-header {
+      font-weight: 100;
+      font-size: 20px;
+      padding: 0px;
+      &__filterrule-input{
+        padding: 10px 15px;
+        font-size: 70%;
+        border: 0px;
+        outline: none;
+        color: rgb(130, 130, 130);
+      }
+      &__search-rule-icon{
+        color: #737373;
+        vertical-align: middle;
+        padding-left: 20px;
+        margin-right: -20px;
+        font-size: 110%;
+        opacity: 0.5;
+      }
+      &__create-new.mat-button{
+        width: 100%;
+        border-top: 1px solid #c0c0c0;
+        color: #006fff;
+        font-weight: 600;
+        font-size: 80%;
+      }
+      &__rulename-wrapper {
+        .rulename-wrapper {
+          &__rulename {
+            font-weight: 100;
+            text-transform: capitalize;
+          }
+        }
+      }
+      &__header-padding {
+        font-weight: 100;
+        padding: 0px;
+        margin: 0;
+      }
+      &__rulename-bcrumb {
+        padding: 3px 0px 0px 0px;
+        .bcrumb {
+          &__rulename-title {
+            margin: 0px;
+            font-size: 20px;
+            font-weight: 100;
+          }
+          &__rule-navigation {
+            color: gray;
+            font-size: 12px;
+            padding: 0px;
+            margin: 0px;
+            li {
+              display: inline-block;
+              padding: 0px;
+              margin: 0px;
+            }
+            a {
+              text-decoration: inherit;
+              color: inherit;
+            }
+            .active {
+              color: rgba(0, 0, 0, 0.87);
+            }
+          }
+          &__account {
+            font-weight: 100;
+            cursor: pointer;
+            outline: none;
+          }
+        }
+      }
+    }
+  }
+  .mat-card.rule-config {
+    padding: 0px;
+    border: 1px solid #D5D5D5;
+    box-shadow: none;
+    border-radius: 4px;
+  }
+  &__rule-config {
+    .rule-config {
+      &__refdom-section,
+      &__condition-section,
+      &__lookup-section,
+      &__rewrite-section {
+        
+        border-right: 1px solid #D5D5D5;
+        .column-heading {
+          border-bottom: 1px solid #D5D5D5;
+          background: #FAFAFA;
+          vertical-align: middle;
+          padding: 15px 20px 7px 20px;
+          @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+            padding: 10px 15px 7px 15px;
+          }
+          &__h3 {
+            padding-top: 7px;
+            margin: 0px;
+            @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+              font-size: 13px;
+            }
+          }
+          &__icon {
+            color: #006FFF;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+              font-size: 32px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+.rule-header {
+  &__filterrule-input{
+    padding: 10px 15px;
+    font-size: 70%;
+    border: 0px;
+    outline: none;
+    color: rgb(130, 130, 130);
+  }
+  &__search-rule-icon{
+    color: #737373;
+    vertical-align: middle;
+    padding-left: 20px;
+    margin-right: -20px;
+    font-size: 110%;
+    opacity: 0.5;
+  }
+  &__create-new.mat-button{
+    width: 100%;
+    border-top: 1px solid #c0c0c0;
+    color: #006fff;
+    font-weight: 600;
+    font-size: 80%;
+  }
+}
+
+.mat-option {
+  color: rgba(0, 0, 0, 0.87);
+  text-transform: capitalize;
+}
+
+.mat-select-value-text {
+  text-transform: capitalize;
+}
+
+.mat-primary .mat-option.mat-selected:not(.mat-option-disabled) .mat-option-text {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+omni-confirmation .confirmation {
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    width: 600px;
+    .confirmation-button-section .button {
+      width: auto;
+      padding: 10px 15px;
+      height: auto;
+    }
+  }
+}
+
+.text-ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+}

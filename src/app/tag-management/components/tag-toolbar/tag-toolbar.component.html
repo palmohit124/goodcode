@@ -1,0 +1,34 @@
+<header class="header" fxFlex>
+  <div fxFill fxLayout="row" fxLayoutAlign="start start">
+    <div fxFlex="100" fxLayout="row" fxLayoutAlign="start center" class="header__wrapper">
+
+      <div fxFlex="20" class="header__logo" fxLayout="row" fxLayoutAlign="start end">
+        <a class="active" routerLink="/tag-management/{{(accountState$|async)}}/" routerLinkActive="active">
+          <img src="assets/logo/marchex-wordmark-white-small.png">
+        </a>
+      </div>
+
+      <div fxFlex="45" fxLayout="row" fxLayoutAlign="start start">
+        <ul class="header__navigation">
+          <li class="active">
+            <a>Tag Management</a>
+          </li>
+        </ul>
+      </div>
+
+      <div fxFlex="34" class="header__user-info" fxLayout="row" fxLayoutAlign="end center">
+        <img class="avatar" [src]="user?.picture">
+        <div class="username" fxhide fxShow.gt-sm>
+          <h3 class="username display-inline" [matMenuTriggerFor]="menu"> {{user?.name}}
+            <span class="icon-arrow-down"></span>
+          </h3>
+          <mat-menu #menu="matMenu" class="mat-menu-item-button">
+            <button (click)="logout($event)" mat-menu-item>
+              <span>Logout</span>
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

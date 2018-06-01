@@ -1,0 +1,14 @@
+{
+  "auth": {
+    "accessAllowedTo": [
+      "staff"
+    ]
+  },
+  "routes":{
+    "routesWithoutNav": ["/customer"]
+  },
+  "baseApiUrl" : "https://api.marchex.io/v3/",
+  "oAuthConfigs": {
+    "redirectUri": ""
+  }
+}

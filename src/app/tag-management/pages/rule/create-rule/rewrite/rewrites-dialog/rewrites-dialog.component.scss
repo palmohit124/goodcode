@@ -1,0 +1,59 @@
+.rewrites {
+    border-radius: 10px;
+    padding: 60px 25px 30px 25px;
+    width: 600px;
+    position: relative;
+    .add-rewrites {
+        color: #0070FF;
+        display: inherit;
+        text-align: center;
+        margin-top: -34px;
+        font-size: 44px;
+        cursor: pointer;
+        opacity: 0.93;
+    }
+    .mat-form-field.display-block {
+        display: block;
+    }
+    &__button-section {
+        display: flex;
+        margin: auto;
+        margin-right: 0px;
+        padding-top: 30px;
+        justify-content: flex-end;
+        .button {
+            width: 119px;
+            text-align: center;
+            margin-right: 15px;
+            padding: 5px;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .mat-button.update-button {
+            background: linear-gradient(to right, #0070FF 0%, #00ACE7 100%);
+            color: white;
+            margin: 0px;
+        }
+        .cancel-button {
+            color: #266df1;
+        }
+        .update-button {
+            &.disabled {
+                cursor: default;
+                pointer-events: none;
+                background: #A8A9AA;
+            }
+        }
+    }
+}
+
+.dialog-close-icon {
+    position: absolute;
+    padding: 4px;
+    font-size: 16px;
+    font-weight: 900;
+    opacity: 0.6;
+    right: 10px;
+    top: 15px;
+    cursor: pointer;
+}

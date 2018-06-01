@@ -1,0 +1,19 @@
+mat-card {
+  min-height: 300px;
+  
+  &.accounts-card {
+    padding: 0px;
+    margin-bottom: 30px;
+  }
+
+  .mat-tab-label {
+    min-width: 230px;
+    font-size: 12px;
+    color: #827e7e;
+  }
+
+  .mat-tab-group.mat-primary .mat-tab-label:focus {
+    color: #000000;
+    background-color: #FFFFFF
+  }
+}

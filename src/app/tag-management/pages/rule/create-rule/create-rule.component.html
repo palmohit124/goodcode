@@ -1,0 +1,71 @@
+<div fxLayout="column" fxLayoutAlign="start center">
+  <div class="create-rule create-rule-page-wrapper" cdkScrollable>
+    <!-- Back to previous page link -->
+    <h2 class="create-rule__back-page-link back-page-link">
+      <span class="back-link" routerLink="/tag-management/{{accountId}}">
+        <span class="icon-arrow-left back-page-link__icon-font"></span>
+        Back to Previous Page
+      </span>
+    </h2>
+
+    <!-- create rule header -->
+    <mat-card class="create-rule__rule-header rule-header">
+      <div fxFlex="50" class="rule-header__rulename-wrapper rulename-wrapper">
+        <h5 class="rulename-wrapper__rulename rule-header__header-padding">{{ruleName}}
+        </h5>
+        <!-- bread crumb -->
+        <div class="rule-header__rulename-bcrumb bcrumb">
+          <div>
+            <h6 class="display-inline bcrumb__account" routerLink="/tag-management/{{accountId}}">Accounts </h6>
+            <h6 class="display-inline bcrumb__account"> > </h6>
+            <h6 class="display-inline"> Ruleset</h6>
+          </div>
+        </div>
+      </div>
+      <div fxFlex="50" class="text-align-right">
+        <mat-form-field>
+          <mat-select placeholder="Jump To Rule" [(ngModel)]="ruleNameSelection" (openedChange)="resetRuleList($event)">
+            <input autocomplete="off" tabindex="1" class="rule-header__filterrule-input" [formControl]="ruleCtrl" type="text" placeholder="Search Rule"
+            />
+            <span class="icon-search-analytics rule-header__search-rule-icon"></span>
+            <mat-option (click)="rule.graphId != ruleId ? openRuleDialog(rule) : ''" *ngFor="let rule of ruleSet" [value]="rule.name">
+              {{rule.name}}
+            </mat-option>
+            <div class="text-align-center" *ngIf="!ruleSet.length">
+              <h5 class="display-inline">No Rules Found</h5>
+            </div>
+            <button mat-button class="rule-header__create-new" (click)="openCreateRuleDialog()">
+              <span class="icon-plus"></span>Create New</button>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </mat-card>
+
+    <!-- create rule content -->
+    <mat-card class="create-rule__rule-config rule-config">
+      <!-- Refdom list -->
+      <div fxFlex="25" class="rule-config__refdom-section">
+        <omni-refdom-list></omni-refdom-list>
+      </div>
+
+      <!-- conditions list -->
+      <div fxFlex="25" class="rule-config__condition-section">
+        <omni-condition-list></omni-condition-list>
+      </div>
+
+      <!-- Lookup list -->
+      <div fxFlex="25" class="rule-config__lookup-section">
+        <omni-lookup-list></omni-lookup-list>
+      </div>
+
+      <!-- Rewrites list -->
+      <div fxFlex="25" class="rule-config__rewrite-section">
+        <omni-rewrite-list></omni-rewrite-list>
+
+      </div>
+
+    </mat-card>
+
+
+  </div>
+</div>

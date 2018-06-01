@@ -1,0 +1,43 @@
+.sidenav-content {
+  background: linear-gradient( #00aee6, #3e71ff);
+  height: 100%;
+  text-align: center;
+  .nav-logo {
+    margin-top: 10px;
+  }
+  .nav-content {
+    margin-top: 45px;
+    mat-list-item {
+      color: #FAFAFA;
+      display: block;
+      margin-bottom: 15px;
+      opacity: 0.5;
+      
+      &.selected {
+        opacity: 1;
+      }
+
+      .mat-list-item-content {
+        width: 100%;
+      }
+    }
+  }
+  .minus-margin-4 {
+    margin-top: -4px;
+  }
+  .text-align-end {
+    text-align: end;
+  }
+}
+
+@media only screen and (min-width: 1370px) and (max-width: 1500px) {
+  .side-bar-font {
+    font-size: 17px;
+  }
+}
+
+@media only screen and (min-width: 1500px) and (max-width: 2000px) {
+  .side-bar-font {
+    font-size: 20px;
+  }
+}

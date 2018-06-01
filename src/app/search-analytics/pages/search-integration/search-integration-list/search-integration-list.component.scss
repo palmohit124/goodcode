@@ -1,0 +1,121 @@
+.search-integration {
+  display: inline-flex;
+}
+
+.search-integration__add-integration {
+  margin-top: -45px;
+  height: 35px;
+  width: 35px;
+  margin-left: auto;
+  margin-right: 20px;
+  background-color: #FAFAFA;
+  color: #93E77D;
+  border: solid 1px #93E77D;
+  border-radius: 25px;
+  cursor: pointer;
+  
+  .icon-plus {
+    font-size: 35px;
+  }
+}
+
+.search-integration__integration-section {
+  padding:20px;
+  min-height: 395px;
+
+  .integration-text {
+    color: #38B7EC;
+    margin-top: 0px;
+    font-size: 15px;
+  }
+
+  .integration-list {
+    margin-top: 15px;
+    color: #bfbdbd;
+    min-height: 360px;
+
+    &__row {
+      padding-top: 15px;
+      padding-bottom: 15px;
+
+      &--border {
+        border-top: solid 1px #EFECEC;
+      }
+
+      &__radio-button {
+        margin: auto;
+        padding-top: 10px;
+      }
+
+      &__source-icon {
+        margin: auto;
+        padding-top: 10px;
+
+        .bing-icon {
+          height: 20px;
+          width: 17px;
+        }
+    
+        .adwords-icon {
+          height: 20px;
+          width: 20px;
+        }
+      }
+
+      &__name {
+        margin: auto;
+
+        .name-text {
+          margin: 0px;
+          padding-top: 3px;
+          color: #535353;
+
+          &-active {
+            color: #5CC2F0;
+          }
+        }
+      }
+
+      &__delete-icon {
+        padding-top: 10px;
+        .delete-icon {
+          font-size: 25px;
+          color: #C0434E;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.search-integration__message-section {
+  text-align: center;
+  color: #757373;
+  margin-top: 15px;
+}
+
+.search-integration__pagination-section {
+  margin-left: auto;
+  margin-right: 0;
+  margin-bottom: 20px;
+  height: 40px;
+
+  mat-paginator {
+      
+    .mat-paginator-page-size {
+      display: none;
+    }
+
+    .mat-paginator-range-label {
+      margin: 0 10px;
+    }
+
+    &.pagination {
+      background-color: #FAFAFA;
+      min-width: 170px;
+      min-height: 35px;
+      margin-bottom: 20px;
+      margin-right: 20px;
+    }
+  }
+}

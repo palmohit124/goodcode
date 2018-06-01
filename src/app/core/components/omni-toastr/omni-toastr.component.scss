@@ -1,0 +1,32 @@
+:host {
+  background-color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  margin: 0 0 6px;
+  padding: 10px 10px 10px 10px;
+  width: 350px;
+  border-radius: 3px 3px 3px 3px;
+  box-shadow: 0 0 12px #999999;
+  opacity: 0.8;
+  pointer-events: all;
+
+  &:hover {
+    opacity: 1;
+    cursor: pointer;
+  }
+  &.success {
+    color: #68d557;
+  }
+
+  &.error {
+    color: #bf2d30;
+  }
+
+  .toastr-icon {
+    font-size: 20px;
+  }
+
+  .toastr-close {
+    color: #879198;
+  }
+}

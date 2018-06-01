@@ -1,0 +1,64 @@
+<mat-card>
+  <div class="report-schedule" fxLayout="column" fxLayoutAlign="none">
+    <omni-card-header [headerText]="'Report Schedule'"></omni-card-header>
+    <div class="report-schedule__delete-schedule" [ngClass]="{'disabled' : !canBeDeleted || !hasReportSettings}">
+      <span class="icon-delete" (click)="removeSchedule(reportSchedule)"></span>
+    </div>
+    <div class="report-schedule__form form" fxLayout="column" fxLayoutAlign="none">
+      <form [formGroup]="formData" (ngSubmit)="updateReportSchedule(formData.value)" #reportSchedule="ngForm" fxLayout="column"
+        fxLayoutAlign=" none">
+        <div *ngIf="!hasReportSettings" class="report-schedule-display">
+          Please define Report Settings before creating a Report Schedule.
+        </div>
+        <div *ngIf="hasReportSettings" class="report-schedule-display">
+          <div class="form__time-window time-window" fxLayout.md="column" fxLayout.sm="column" fxLayout.xs="column" fxLayout="row">
+            <div fxFlex="50" class="time-window__delivery-from">
+              <mat-form-field>
+                <mat-select class="time-window__select" placeholder="Delivery Time Window (From)" formControlName="startTime" (change)="setReportDeliverByTime()">
+                  <mat-option *ngFor="let time of startTime" [value]="time">
+                    {{time}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxFlex="50">
+              <mat-form-field>
+                <mat-select class="time-window__select" placeholder="Delivery Time Window (To)" formControlName="deliverByTime">
+                  <mat-option *ngFor="let time of deliverByTime" [value]="time">
+                    {{time}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+          <mat-form-field class="form__timezone timezone">
+            <mat-select class="timezone__select" placeholder="Timezone" formControlName="timezone">
+              <mat-optgroup *ngFor="let timeZoneObj of tzOffsetList.timezoneOffsets" [label]="timeZoneObj.name">
+                <mat-option *ngFor="let timeZone of timeZoneObj.timezones" [value]="timeZone">
+                  {{ timeZone }}
+                </mat-option>
+              </mat-optgroup>
+            </mat-select>
+          </mat-form-field>
+          <div class="form__status status">
+            <mat-form-field>
+              <mat-select placeholder="Status" formControlName="status">
+                <mat-option [value]="'Active'">
+                  Active
+                </mat-option>
+                <mat-option [value]="'Paused'">
+                  Paused
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="text-align-right form__button-section">
+            <button mat-button class="save-button" [ngClass]="{'disabled' : !formData.valid}">
+              <h4>Save Changes</h4>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</mat-card>

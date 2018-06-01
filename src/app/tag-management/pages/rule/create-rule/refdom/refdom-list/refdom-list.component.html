@@ -1,0 +1,23 @@
+<div class="column-heading">
+  <div fxFlex="90">
+    <h3 class="column-heading__h3">
+      Referring Domain
+    </h3>
+  </div>
+  <div fxFlex="10">
+    <span (click)="openCreateRuleWizard()" class="column-heading__icon icon-plus"></span>
+  </div>
+</div>
+<div cdkScrollable class="rule-config__refdom-list-column">
+  <mat-card (click)="setCurrentRefdom(refdom)" [ngClass]="{'selected': refdom.graphId == (selectedRefdom$ | async)}" *ngFor="let refdom of refdoms;let index=index"
+    class="rule-config__mat-card-padding rule-config__refdom-list">
+    <div fxFlex="70" class=" text-ellipsis">
+      <h3 class="display-inline rule-config__refdom-list__refdom-domain">{{refdom.domain}}</h3>
+    </div>
+    <div fxFlex="30" class="rule-config__refdom-list__buttons">
+      <span (click)="openRefdomDialog(refdom)" class="rule-config__refdom-list__icon icon-edit"></span>
+      <span class="rule-config__refdom-list__icon icon-delete" (click)="deleteRefdom(refdom)"></span>
+      <span class="icon-arrow-right rule-config__refdom-list__icon rule-config__refdom-list__arrow-icon"></span>
+    </div>
+  </mat-card>
+</div>

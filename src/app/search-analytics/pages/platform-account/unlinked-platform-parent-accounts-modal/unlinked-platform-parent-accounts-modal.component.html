@@ -1,0 +1,53 @@
+<div class="link-platform-account" fxLayout="column" fxLayoutAlign=" none">
+  <div>
+    <div fxFlex="50" class="text-align-left">
+      <img class="text-align-left" src="assets/logo/marchex-logo-modal.png">
+    </div>
+    <div fxFlex="50" class="text-align-right close-section">
+      <img (click)="dialogRef.close()" class="text-align-left close-button" src="assets/images/customer/cross.png">
+    </div>
+  </div>
+  <div class="header">
+    <h3 class="header--text display-inline">
+      Link Parent Accounts
+    </h3>
+  </div>
+  <omni-search (search)="search($event)" class="account-searchbar"></omni-search>
+  <div class="account">
+    <div class="message-section">
+      <h4 *ngIf="(platformAccountState$|async).unlinkedLoaded && !(platformAccountState$|async).unlinkedParentAccounts.total_items" class="display-inline">No parent accounts found</h4>
+      <h4 *ngIf="(platformAccountState$|async).unlinkedloading && !(platformAccountState$|async).unlinkedParentAccounts.total_items" class="display-inline">Fetching parent accounts</h4>
+    </div>
+    <div fxLayout="column" fxLayoutAlign=" none" class="account__table" >
+      <mat-radio-group [(ngModel)]="selectedParentAccountPlatformId">
+        <div *ngFor="let account of (platformAccountState$|async).unlinkedParentAccounts.parents; let i = index" class="account__table__row account__table__row--child-border" [ngClass]="{'account__table__row--child-border': i != 0}">
+          <div class="account__table-padding">
+            <div fxFlex="20" fxFlexAlign="center">
+              <mat-radio-button (change)="onParentAccountSelect(account.platformId)" [value]="account.platformId"></mat-radio-button>
+            </div>
+            <div fxFlex="60">
+              <h6 class="display-inline">Account Name</h6>
+              <h5 class="account__table-block">{{account.name}}</h5>
+            </div>
+            <div fxFlex="20">
+              <h6 class="display-inline">Account ID</h6>
+              <h5 class="account__table-block">{{account.platformId}}</h5>
+            </div>
+          </div>
+        </div>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div class="account-body__footer">
+    <div class="account__pagination">
+      <mat-paginator *ngIf="(platformAccountState$|async).unlinkedParentAccounts.total_items > limit" 
+        [length]="(platformAccountState$|async).unlinkedParentAccounts.total_items" [pageSize]="limit" [pageIndex]="offset" (page)="paginateParent($event)">
+      </mat-paginator>
+    </div>
+    <div class="text-align-right button-section">
+      <button mat-button class="onboard-button" *ngIf="(platformAccountState$|async).unlinkedParentAccounts.total_items" [disabled]="selectedParentAccountPlatformId == '0'" (click)="linkParentAccount()">
+        <h4>Link Accounts</h4>
+      </button>
+    </div>
+  </div>
+</div>

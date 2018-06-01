@@ -1,0 +1,20 @@
+<div class="customer-edit-wrapper">
+  <div fxLayout="column" *ngIf="(showSidenav$ | async)" fxLayoutAlign="end start">
+    <div class="customer-name-edit">
+      <h2 id="customerName" class="display-inline">{{(selectedCustomer$ | async)?.name}}</h2>
+      <span id="openEditCustomerModal" class="icon-rename-customer edit-icon" (click)="openEditCustomerModal()"></span>
+    </div>
+    <div class="customer-name">
+      <h6>
+        <span *ngIf="(customerState$ | async).customers.total_items !== 1">
+          <a id="navigateToCustomer" routerLink="/customer">Customers</a> /
+        </span>
+        <span>{{(selectedCustomer$ | async)?.name}}</span>
+        <span>
+          /
+          <a routerLink="/search-analytics" routerLinkActive="active">Search Analytics</a>
+        </span>
+      </h6>
+    </div>
+  </div>
+</div>

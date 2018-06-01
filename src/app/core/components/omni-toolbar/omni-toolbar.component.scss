@@ -1,0 +1,122 @@
+.header {
+  padding: 10px 0;
+  background: url('/assets/logo/marchex_menu-header-bg.png') no-repeat;
+  background-size: cover;
+  background-position: 0 -5px;
+  height: 125px;
+  line-height: 55px;
+  
+  @media screen and (max-width: 1440px) {
+    background-position: right 0px top -5px;
+    height: 92px;
+    line-height: 45px;
+  }
+  @media screen and (max-width:992px) {
+    line-height: 15px;
+  }
+
+  @media screen and (max-width: 768px) {
+    background-position: right -50px top -6px;
+    height: 80px;
+    padding: 0px 0px 10px 0px;
+  }
+
+  &__wrapper {
+    height: 100%;
+    @media screen and (max-width: 1440px) {
+      height: 78%;
+    }
+
+    @media screen and (max-width: 768px) {
+      height: 95%;
+    }
+    .customer-wrapper{
+      display: inline-block;
+      margin: 0;
+      color: #fff;
+      p.label {
+        padding: 2px 40px;
+        margin: 0 0 -7px 0;
+        border-bottom: 4px solid #fff;
+      }
+    }
+  }
+
+  &__logo {
+    img {
+      width: 130px;
+      margin-left: 30px;
+    }
+  }
+  &__user-info {
+    text-align: right;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    @media screen and (max-width: 992px) {
+      margin-top: 20px;
+    }
+    @media screen and (max-width: 768px) {
+      margin-top: 0px;
+      padding-left: 0px;
+    }
+    .username-wrapper {
+      margin: 0;
+      color: #fff;
+      position: relative;
+      cursor: pointer;
+      @media screen and (min-width: 768px) and (max-width: 1024px) {
+        font-size: 13px;
+      }
+      .greet-label {
+        line-height: 10px;
+      }
+    }
+    .icon-arrow-down {
+      font-size: 23px;
+      position: relative;
+      top: 5px;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+  }
+}
+.avatar {
+  width: 35px;
+  min-width: 35px;
+  height: 35px;
+  line-height: 35px;
+  margin: 5px 10px 0 0;
+  border-radius: 50%;
+  font-size: 17px;
+  font-weight: 500;
+  text-align: center;
+  color: #FFFFFF;
+  background-color: #FFF;
+  padding: 3px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.48);
+
+  &.square {
+    border-radius: 0;
+  }
+
+  &.small {
+    width: 20px;
+    min-width: 20px;
+    height: 20px;
+    line-height: 20px;
+  }
+
+  &.big {
+    width: 72px;
+    min-width: 72px;
+    height: 72px;
+    line-height: 72px;
+  }
+
+  &.huge {
+    width: 96px;
+    min-width: 96px;
+    height: 96px;
+    line-height: 96px;
+  }
+}

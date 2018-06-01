@@ -1,0 +1,16 @@
+<div fxLayout="row" [class]="options.toastClass" fxLayoutAlign=" center">
+  <div class="toastr-icon" fxFlex="15">
+    <span [class]="options.toastClass === 'success' ? 'icon-completed' : 'icon-error'"></span>
+  </div>
+  <div class="toastr-content" fxFlex="70">
+    <div>
+      <h5 class="display-inline">{{title}}</h5>
+    </div>
+    <div>
+      <h6 class="display-inline">{{message}}</h6>
+    </div>
+  </div>
+  <div class="toastr-close text-align-center" fxFlex="15">
+    <span class="icon-cross" (click)="remove()"></span>
+  </div>
+</div>

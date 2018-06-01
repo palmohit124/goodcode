@@ -1,0 +1,53 @@
+.sidebar {
+    background: #F7F8FA;
+    box-shadow: 0.1px 0.1px 0.1px #fafafb;
+    display: block;
+    height: 100%;
+    position: absolute;
+    padding-top: 20px;
+    z-index: 4;
+    padding-left: 15px;
+    margin-top: -23px;
+    @media screen and (max-width: 1024px) and (min-width: 768px) {
+      min-width: 27%;
+    }
+    &__navigations {
+      list-style: none;
+      padding: 0px;
+      margin: 0px;
+      a {
+        color: #808991;
+        padding: 15px 70px 15px 40px;
+        @media screen and (max-width: 1024px) and (min-width: 768px) {
+          font-size: 14px;
+          padding: 15px 50px 15px 20px
+        }
+        display: block;
+        text-decoration: none;
+        margin-left: -15px;
+      }
+      a:hover,
+      .active {
+        color: #fff;
+        background: #006FFF;
+      }
+    }
+    &__hide {
+      padding-bottom: 20px;
+      .icon-back {
+        font-size: 30px;
+        cursor: pointer;
+      }
+    }
+  }
+  
+  .sidebar-show {
+    position: absolute;
+    padding-left: 15px;
+    .icon-menu {
+      font-size: 30px;
+      color: #0070ff;
+      cursor: pointer;
+    }
+  }
+  

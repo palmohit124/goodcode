@@ -1,0 +1,42 @@
+<div class="featues-list" fxLayout="column" fxLayoutAlign="none">
+  <div fxLayout="column" fxLayoutAlign="none" fxFlex="100">
+    <div fxLayout="row" class="rulename-bcrumb">
+      <div fxFlex="90" class="rule-navigation">
+        <h2 class="title">Tag Features</h2>
+      </div>
+      <div fxFlex="10" class="cross-icon">
+        <span class="icon-cross" (click)="dialogRef.close(true)"></span>
+      </div>
+    </div>
+    <div class="featues-list__list-section list-section">
+      <mat-card *ngFor="let tagfeature of (tagFeaturesState$|async).tagFeatures" class="text-align-left list-section__rule-section rule-section">
+        <div fxLayout="column">
+          <div fxLayout="column">
+            <div fxFlex="100" class="rule-section__rule-name rule-section__parent-rule-name">
+              <div fxFlex="90">
+                <a><h4 class="display-inline">{{tagfeature.name}}</h4></a>
+              </div>
+              <div fxFlex="10">
+                <mat-slide-toggle (change)="tagfeature.enabled=!tagfeature.enabled;enableTagFeature(tagfeature)" class="parent-features-slide"
+                  [color]="blue" [checked]="tagfeature.enabled">
+                </mat-slide-toggle>
+              </div>
+            </div>
+            <div fxFlex="100" *ngIf="tagfeature.enabled && tagfeature.providers" class="rule-section__rule-name rule-section__child-rule-name">
+              <div class="child-rulename-row" *ngFor="let provider of tagfeature.providers" fxLayout="row">
+                <div fxFlex="90">
+                  <a>{{provider.name}}</a>
+                </div>
+                <div fxFlex="10">
+                  <mat-slide-toggle class="child-features-slide" (change)="provider.enabled=!provider.enabled;enableTagProvider(provider)"
+                    enableTagProvider [color]="blue" [checked]="provider.enabled">
+                  </mat-slide-toggle>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

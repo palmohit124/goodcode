@@ -1,0 +1,26 @@
+<div class="edit-customer" fxLayout="column" fxLayoutAlign="none">
+  <div>
+    <div fxFlex="50" class="text-align-left">
+      <img class="text-align-left" src="assets/logo/marchex-logo-modal.png">
+    </div>
+    <div fxFlex="50" class="text-align-right close-section">
+      <img (click)="dialogRef.close()" class="text-align-left close-button" src="assets/images/customer/cross.png">
+    </div>
+  </div>
+  <div class="text-align-center customer-illustration-section">
+    <img src="assets/images/customer/illustration.png">
+  </div>
+  <div class="text-align-center edit-customer-info">
+    <h4 class="display-inline">{{selectedCustomer.name }}</h4>
+  </div>
+  <div class="text-align-center customer-name-section">
+    <mat-form-field class="name-input">
+      <input matInput placeholder="New Name" [(ngModel)]="updatedCustomerName">
+    </mat-form-field>
+  </div>
+  <div class="text-align-center customer-edit-button-section">
+    <button mat-button class="edit-button" (click)="updateCustomer()" [disabled]="updatedCustomerName.trim().length < 2">
+      <h3>SAVE</h3>
+    </button>
+  </div>
+</div>

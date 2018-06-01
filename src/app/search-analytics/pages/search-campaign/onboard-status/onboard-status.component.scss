@@ -1,0 +1,109 @@
+.onboard-status {
+  padding: 20px 20px 20px 20px;
+  
+  &__title-text {
+    margin: 0px;
+    color: #38B7EC;
+  }
+
+  &__list-section {
+    min-height: 100px;
+  }
+
+  &__message-section {
+    text-align: center;
+    color: #757373;
+    margin-top: 80px;
+  }
+}
+
+.onboard-status__table {
+  color: #99A0A7;
+  min-height: 458px;
+  
+  .table {
+    &__row {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      
+      &__campaign-date {
+        color: #555758;
+      }
+
+      &--padding {
+        padding-top: 10px;
+      }
+
+      &__file-url {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding-right: 20px;
+      }
+
+      &__download {
+        margin: 0px;
+        padding-top: 3px;
+        text-decoration: none;
+        color: #472EFF;
+      }
+
+      &__item {
+        margin: 0px;
+        padding-top: 3px;
+        color: #535353;
+      }
+
+      &--border {
+        border-top: solid 1px #EFECEC;
+      }
+    }
+
+    &__campaign-status {
+      padding-top: 10px;
+
+      .campaign-status {
+
+        &__icon-inprogress {
+          padding-right: 10px;
+          color: #0C0C0C;
+        }
+
+        &__inprogress-text {
+          color: #A0A6AE;
+        }
+
+        &__error-text {
+          color: #EA5562;
+        }
+
+        &__complete-text {
+          color: #414345;
+        }
+      }
+    }
+  }
+}
+
+.onboard-status__pagination {
+  width: 180px;
+  margin: auto;
+  margin-right: 0px;
+  min-height: 40px;
+  
+  .mat-paginator {
+    min-height: 40px;
+    background-color: #FAFAFA;
+
+    .mat-paginator-container {
+      min-height: 40px;
+    }
+    
+    .mat-paginator-page-size {
+      display: none;
+    }
+
+    .mat-paginator-range-label {
+      margin: 0 10px;
+    }
+  }
+}

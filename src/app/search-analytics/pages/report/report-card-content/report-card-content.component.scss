@@ -1,0 +1,149 @@
+.report-card-content {
+  min-height: 400px;
+}
+
+.report-details {
+
+  .header-text {
+    color: #38B7EC;
+    margin-top: 0px;
+    font-size: 14px;
+  }
+
+  &__divider {
+    border-bottom: 1px solid #E1DEDC;
+    margin: 20px 0px;
+  }
+
+  &__settings {
+    margin: 0px 20px;
+  }
+}
+
+.report-details__schedule {
+  margin: 0px 20px;
+
+    .schedule {
+      &__details {
+        color: #bfbdbd;
+
+        &__text {
+          margin: auto;
+          font-size: 12px;
+          color: #5C5D5F;
+        }
+
+        &__status {
+          margin: auto;
+          text-align: center;
+
+          .status {
+            &__active {
+              color: green;
+            }
+
+            &__pasued {
+              color: #EC636E;
+            }
+          }
+        }
+      }
+    }
+    .message-section {
+      text-align: center;
+      color: #757373;
+      margin-top: 15px;
+      margin-bottom: 20px;
+    }
+}
+
+.report-details__settings {
+  .settings {
+    &__details {
+      color: #bfbdbd;
+
+      &__text {
+        margin: auto;
+        font-size: 12px;
+        color: #5C5D5F;
+      }
+
+      .row--padding {
+        padding-bottom: 30px;
+      }
+    }
+  }
+  .message-section {
+    text-align: center;
+    color: #757373;
+    margin-top: 65px;
+  }
+}
+
+.download-report {
+  border-left: 1px solid #E1DEDC;
+  padding: 20px;
+  background-color: #FAFAFA;
+
+  &__icon {
+    text-align: center;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    
+    .icon {
+
+      &--size {
+        height: 120px;
+        width: 130px;
+      }
+    }
+  }
+
+  &__date {
+
+    .date {
+      
+      &__start {
+        padding-right: 15px;
+      }
+    }
+  }
+
+  &__button-section {
+    margin: auto;
+    
+    .mat-button {
+      line-height: 10px;
+    }
+
+    .download-button {
+      background: linear-gradient(to right, #6600ff 0%, #05a5e9 100%);
+      color: white;
+      width: 170px;
+      border-radius: 3px;
+      height: 45px;
+
+      &.disabled {
+        cursor: default;
+        pointer-events: none;
+        opacity: 0.6;
+      }
+    }
+  }
+
+  mat-form-field {
+
+    &.mat-form-field {
+      width: 100%;
+      font-size: 14px;
+    }
+
+    mat-datepicker-toggle {
+
+      &.mat-datepicker-toggle {
+        font-size: 20px;
+        color: #B5B6B6;
+      }
+    }
+  }
+}

@@ -1,0 +1,57 @@
+.confirmation {
+  height: 100px;
+  width: 690px;
+  background-color: #fafafb;
+  padding: 0px;
+
+  &-icon-section {
+    margin: auto;
+    text-align: center;
+
+    .delete-icon {
+      font-size: 35px;
+      color: #BF3E4A;
+    }
+  }
+
+  &-message-section {
+    margin: auto;
+
+    .title-text {
+      color: gray;
+    }
+
+    .content-text {
+      margin: 0px;
+      padding-top: 4px;
+      text-transform: capitalize;
+    }
+  }
+  
+  &-button-section {
+    display: inline-flex;
+    margin: auto;
+  
+    .button {
+      width: 86px;
+      text-align: center;
+      height: 30px;
+      margin: auto;
+      padding-top: 11px;
+      border-radius: 5px;
+    }
+  
+    .delete-button {
+      color: #DF828C;
+      border: solid 0.11em #DF828C;
+      margin-right: 0px;
+      cursor: pointer;
+    }
+  
+    .cancel-button {
+      color: #5FCCF1;
+      border: solid 0.11em #5FCCF1;
+      cursor: pointer;
+    }
+  }
+}

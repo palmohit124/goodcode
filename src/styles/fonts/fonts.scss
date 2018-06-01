@@ -1,0 +1,24 @@
+@import "~@angular/material/theming";
+@import "mixins";
+
+/* @import must be at top of file, otherwise CSS will not work */
+@import url('//hello.myfonts.net/count/3442b9');
+
+@include font-face(P22UndergroundMedium, '/assets/fonts/3442B9_4_0', null, null, eot ttf woff woff2);
+$mchx-font-family-h1: 'P22UndergroundMedium', 'Trebuchet MS';
+$mchx-font-family-h3: 'P22UndergroundMedium', 'Trebuchet MS';
+$mchx-font-family-h6: 'P22UndergroundMedium', 'Trebuchet MS';
+
+@include font-face(P22UndergroundLight, '/assets/fonts/3442B9_3_0', null, null, eot ttf woff woff2);
+$mchx-font-family-h2: 'P22UndergroundLight', 'Trebuchet MS';
+$mchx-font-family-h4: 'P22UndergroundLight', 'Trebuchet MS';
+
+@include font-face(RalewayLight, '/assets/fonts/raleway-light', null, null, otf ttf);
+$mchx-font-family-body: 'RalewayLight', 'Trebuchet MS';
+$mchx-font-family-h5: 'RalewayLight', 'Trebuchet MS';
+
+$omni-font-config: mat-typography-config(
+  $font-family: 'RalewayLight, Trebuchet MS'
+);
+
+@include angular-material-typography($omni-font-config);

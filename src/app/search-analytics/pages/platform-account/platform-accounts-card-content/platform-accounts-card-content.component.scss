@@ -1,0 +1,107 @@
+.platform-account {
+  min-height: 180px;
+}
+
+.platform-account__body {
+  min-height: 100px;
+}
+
+.platform-account__card-header-pattern-section {
+  margin-top: 30px;
+}
+
+.platform-account__account-searchbar-section {
+  width: 60%;
+  text-align: center;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.platform-account__message-section {
+  text-align: center;
+  color: #757373;
+  margin-top: 25px;
+
+  &--padding {
+    padding-bottom: 40px;
+  }
+}
+
+.platform-account__account-list {
+  min-height: 420px;
+
+  .linked-account {
+    padding: 40px 40px 0 40px;
+    
+    &-text {
+      color: #38B7EC;
+      margin-top: 0px;
+      padding-left: 20px;
+    }
+
+    &__table {
+      color: #bfbdbd;
+
+      &-padding {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      &__parent-element {
+        padding-bottom: 10px;
+        border-bottom: solid 1px #EFECEC;
+      }
+
+      &__row {
+        padding-top: 15px;
+        padding-bottom: 15px;
+
+        &--child-border {
+          border-top: solid 1px #EFECEC;
+        }
+      }
+
+      &-block {
+        margin: auto;
+        color: #5E6061;
+      }
+      
+      &__link-section {
+        margin: auto;
+
+        &--link {
+          padding-top: 10px;
+          color: #0B97EB;
+          cursor: pointer;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+.platform-account__pagination {
+  bottom: 0;
+  right: 0;
+  width: 170px;
+  height: 50px;
+  margin: auto;
+  margin-right: 20px;
+  margin-bottom: 20px;
+
+  mat-paginator {
+
+    &.mat-paginator {
+      background-color: #FAFAFA;
+      min-height: 50px;
+    }
+
+    .mat-paginator-page-size {
+      display: none;
+    }
+    
+    .mat-paginator-range-label {
+      margin: 0 10px;
+    }
+  }
+}

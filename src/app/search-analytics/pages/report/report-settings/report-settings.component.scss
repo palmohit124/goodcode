@@ -1,0 +1,68 @@
+mat-card {
+  padding: 0px;
+  border: solid 1px #dadada;
+  box-shadow: 0 0px 1px 0px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 5px;
+
+
+  .report-settings {
+    min-height: 428px;
+
+    &__form {
+      padding: 15px 25px;
+
+      .form {
+        mat-form-field {
+          margin-bottom: 10px;
+        }
+        
+        mat-slide-toggle {
+          margin-bottom: 10px;
+        }
+
+        &__timezone-section {
+          max-width: 350px;
+        }
+
+        &__duration-section {
+          max-width: 275px;
+        }
+
+        &__click-to-call {
+          padding:10px 0px;
+          &__text {
+            margin-right: 40px;
+            color: #7d7d7e;
+          }
+        }
+
+        &__ctn-section {
+          max-width: 265px;
+        }
+
+        &__conversion-section {
+          max-width: 360px;
+        }
+
+        &__button-section {
+          margin-top: 30px;
+
+          .submit-button {
+            background: linear-gradient(to right, #6600ff 0%, #05a5e9 100%);
+            color: white;
+            width: 170px;
+            border-radius: 3px;
+            height: 45px;
+
+            &.disabled {
+              cursor: default;
+              pointer-events: none;
+              opacity: 0.6;
+            }
+          }
+        }
+      }
+    }
+  }
+}

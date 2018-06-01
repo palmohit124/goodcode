@@ -1,0 +1,123 @@
+.link-platform-child-account {
+  height: 560px;
+  width: 690px;
+  background-color: #fafafb;
+  padding: 15px;
+
+  .close-section {
+    .close-button {
+      cursor: pointer; 
+    }
+  }
+
+  .header {
+    margin-top: 43px;
+    margin-bottom: 20px;
+
+    &--text {
+      color: #848181;
+    font-weight: lighter;
+    }
+  }
+
+  .account-searchbar {
+    width: 80%;
+    text-align: center;
+    flex-wrap: wrap;
+    margin: auto;
+  }
+  
+  .account {
+    padding-top: 20px;  
+    min-height: 280px;
+
+    &-text {
+      color: #38B7EC;
+      margin-top: 0px;
+      font-size: 15px;
+    }
+
+    &__table {
+      color: #bfbdbd;
+      min-height: 280px;
+
+      &__row {
+        padding-top: 15px;
+        padding-bottom: 15px;
+
+        &--child-border {
+          border-top: solid 1px #EFECEC;
+        }
+      }
+
+      &-block {
+        margin: auto;
+        color: #5E6061;
+      }
+
+      &-padding {
+        padding-left: 40px;
+        padding-right: 40px;
+      }
+      
+      &__link-section {
+        margin: auto;
+
+        &--link {
+          padding-top: 10px;
+          color: #0B97EB;
+          cursor: pointer;
+        }
+      }
+    }
+
+    .message-section {
+      text-align: center;
+      color: #757373;
+    }
+  }
+
+  .account-body__footer {
+    min-height: 110px;
+
+    .account__pagination {
+      margin-left: auto;
+      margin-right: 0;
+      min-height: 45px;
+    
+      mat-paginator {
+          
+        .mat-paginator-page-size {
+          display: none;
+        }
+    
+        .mat-paginator-range-label {
+          margin: 0 10px;
+        }
+    
+        &.mat-paginator {
+          background-color: #FAFAFA;
+          min-width: 150px;
+          min-height: 45px;
+        }
+      }
+    }
+
+    .button-section {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      
+      .mat-button {
+        line-height: 10px;
+      }
+
+      .onboard-button {
+        background: linear-gradient(to right, #6600ff 0%, #05a5e9 100%);
+        color: white;
+        width: 170px;
+        border-radius: 3px;
+        height: 45px;
+      }
+    }
+  }
+}

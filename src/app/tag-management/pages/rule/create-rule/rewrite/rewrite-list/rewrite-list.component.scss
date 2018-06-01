@@ -1,0 +1,95 @@
+.rule-config__rewrite-list-column > div > .mat-card:not([class*=mat-elevation-z]) {
+  box-shadow: none;
+}
+.rule-config {
+  &__rewrite-list-column {
+    height: 400px;
+    height: 400px;
+    max-height: 100%;
+    overflow: hidden;
+    padding-bottom: 10px;
+    
+    &:hover {
+      overflow-y: auto;
+    }
+  }
+  &__rewrite-list {
+    padding: 15px 10px 0px 20px;
+    font-size: 14px;
+    color: #939699;
+    font-size: 14px;
+    margin: 0px;
+    border-bottom: 1px solid #e0e0e0;
+    border-radius: 0px;
+    &__rewrite-phone {
+      font-size: 0.9em;
+      font-weight: 500;
+      color: #9BA2A9;
+      margin: 0px;
+      line-height: 20px;
+    }
+    &__rewrite-call-tracking-number {
+      font-size: 1em;
+      margin: 0px;
+      color: #9BA2A9;
+      font-weight: 100;
+      padding-bottom: 12px;
+    }
+    &__icon-margin {
+      margin-top: 10px;
+    }
+    &__icon {
+      color: #000;
+      padding-top: 3px;
+      font-size: 22px;
+      display: none;
+      line-height: 5px;
+      vertical-align: middle;
+      cursor: pointer;
+      @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+        font-size: 16px;
+      }
+    }
+    &__buttons {
+      text-align: right;
+    }
+    &__icon:hover {
+      color: #25282A;
+    }
+    &:hover {
+      background: #E9E9E9;
+      .rule-config__rewrite-list__rewrite-call-tracking-number,
+      .rule-config__rewrite-list__rewrite-phone {
+        color: #25282A;
+      }
+      .rule-config__rewrite-list__icon {
+        display: inline;
+        color: #25282A;
+      }
+    }
+  }
+}
+
+mat-card.selected {
+  background: #E9E9E9;
+  .rule-config__rewrite-list__rewrite-call-tracking-number,
+  .rule-config__rewrite-list__rewrite-phone {
+    color: #25282A;
+  }
+  .rule-config__rewrite-list__icon {
+    color: #25282A;
+  }
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar {
+  width: 5px;
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 15px;
+  background-color: #D1D4D7;
+  border: 2px solid #D1D4D7;
+}

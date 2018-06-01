@@ -1,0 +1,28 @@
+<div class="open-code-snippet" fxLayout="column" fxLayoutAlign="none">
+  <div fxLayout="row" class="open-code-snippet__code-snippet-header">
+    <div fxFlex="90">
+      <h4>
+        Code Snippet
+      </h4>
+      <h6>
+        Paste on your web page immediately before closing the &lt;/body&gt; tag.
+      </h6>
+    </div>
+    <div fxFlex="10" class="cross-icon">
+      <span class="icon-cross" (click)="dialogRef.close(true)"></span>
+    </div>
+  </div>
+  <div class="open-code-snippet__code-snippet-content">
+    <div fxLayout="column" fxLayoutAlign="none" fxFlex="75">
+        <pre>
+          <code class="copy-snippet-section" highlight [textContent]="scriptData">
+          </code>
+      </pre>
+    </div>
+    <div fxLayout="column" fxLayoutAlign="start end" class="copy-snippet-button"  fxFlex="25">
+      <button mat-raised-button ngxClipboard [cbContent]="scriptData">
+        <span class="icon-copy icon"></span> <h6 class="display-inline">Copy Snippet</h6>
+      </button>
+    </div>
+  </div>
+</div>

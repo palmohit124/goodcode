@@ -1,0 +1,238 @@
+button {
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  outline: none;
+  margin: 0px 0px;
+  background: transparent;
+  box-shadow: none;
+  h5{
+    font-size: 1em;
+  }
+}
+
+.rule-list {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  min-height: 100%;
+}
+
+.rule-list__header {
+  &__bcrumb {
+    .bcrumb {
+      &__title {
+        font: 500 23px/32px RalewayLight, Trebuchet MS;
+        margin: 0;
+        color: #696B6C;
+      }
+      &__rule-navigation {
+        margin: 0px;
+        a {
+          text-decoration: none;
+          color: #5C5E5F;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  &__tag-feature {
+    button {
+      border: 1px solid #0070FF;
+      padding: 15px 20px;
+      color: #0070FF;
+    }
+  }
+}
+
+.rule-list__search-section {
+  margin-top: 40px;
+  .search-section {
+    &__filter-section {
+      .filter-section {
+        &__input-with-icon {
+          border: 1px solid #e4e5e9;
+          border-right: none;
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+          font-size: 0.875em;
+          font-family: RalewayLight, 'Trebuchet MS';
+          color: #5c5e5f;
+          padding: 11px 20px 11px 24px;
+          outline: none;
+          line-height: 20px;
+        }
+        &__input-icon {
+          border: 1px solid #e4e5e9;
+          border-top-right-radius: 5px;
+          border-bottom-right-radius: 5px;
+          border-left: none;
+          background-color: #ffffff;
+          color: #bdbdbd;
+          padding: 12px 10px;
+        }
+      }
+    }
+    &__create-rule-button {
+      button {
+        color: #000;
+        border: 1px #05a5e9 solid;
+        padding: 10px 18px;
+        background: linear-gradient(to right, #0077FC 0%, #05a5e9 100%);
+        color: white;
+        .icon-plus {
+          font-weight: 600;
+          font-size: 1.3em;
+          color: white;
+          vertical-align: middle;
+        }
+      }
+    }
+    &__code-snippet-button {
+      button {
+        color: #0070FF;
+        border: 1px solid #0070FF;
+        padding: 10px 19px;
+      }
+    }
+  }
+}
+
+.rule-list__list-section {
+  margin-top: 50px;
+ 
+  .list-section {
+    &__rule-section {
+      border-radius: 0px;
+      padding: 15px 24px 15px 24px;
+      box-shadow: 0 0px 0px 0px;
+      border-radius: 5px;
+      padding: 15px 24px 15px 24px;
+      border: 1px solid #d9d9d9;
+      margin: 0px 0px 7px 0px;
+      padding: 0px 0px 0px 100px;
+      
+      &.mat-card:not([class*=mat-elevation-z]) {
+        box-shadow: none;
+      }
+      .rule-section {
+        font-size: 14px;
+        box-shadow: none;
+        
+        &__rule-name {
+          padding-top: 20px;
+          padding-bottom: 20px;
+          a {
+            color: #000;
+            text-decoration: none;
+            text-transform: capitalize;
+          }
+        }
+        &__switching-icon {
+          padding-top: 12px;
+          .icon {
+            font-size: 35px;
+          }
+        }
+        &__campaign-name {
+          padding-top: 20px;
+          padding-bottom: 20px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+        }
+        &__delete-rule {
+          border-left: 1px solid #d9d9d9;
+          text-align: center;
+          padding: 5px 0px;
+          display: none;
+          .rule-delete-button {
+            cursor: pointer;
+            color: #000;
+            display: block;
+            font-weight: 500;
+          }
+          .rule-delete-button .icon-delete {
+            display: block;
+            font-size: 28px;
+            padding-bottom: 3px;
+          }
+        }
+      }
+    }
+    &__rule-section:hover {
+      &.mat-card:not([class*=mat-elevation-z]) {
+        box-shadow: 0 1px 5px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .14);
+      }
+      .rule-section {
+        &__delete-rule {
+          display: block;
+        }
+        &__rule-name {
+          a {
+            color: #0070FF;
+            cursor: pointer;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    &__loading-info-text{
+      text-align: center;
+      color: #757373;
+    }
+  }
+}
+
+.rule-list-page-wrapper {
+  padding: 20px 0;
+  width: 60%;
+}
+
+
+/* iPad [portrait + landscape] */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .rule-list-page-wrapper {
+    padding: 20px 0;
+    width: 85%;
+  }
+  .rule-list__search-section {
+    .search-section {
+      &__filter-section {
+        .filter-section {
+          &__input-with-icon {
+            font-size: 12px;
+            padding: 7px 20px 7px 24px;
+            line-height: 15px;
+          }
+          & __input-icon {
+            padding: 10px 10px;
+          }
+        }
+      }
+      &__create-rule-button {
+        button {
+          padding: 10px 15px;
+          font-size: 12px;
+          .icon-plus {
+            font-size: 1em;
+          }
+        }
+      }
+      &__code-snippet-button {
+        button {
+          font-size: 12px;
+          padding: 10px 15px;
+        }
+      }
+    }
+  }
+  .mat-dialog-container .confirmation {
+    width: 600px;
+    .confirmation-button-section .button {
+      width: auto;
+      padding: 10px 15px;
+      height: auto;
+    }
+  }
+}

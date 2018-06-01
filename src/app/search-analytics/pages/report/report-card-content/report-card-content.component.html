@@ -1,0 +1,95 @@
+<div class="report-card-content">
+  <div fxLayout="column" fxLayoutAlign="none" fxFlex="70" class="report-details">
+    <omni-card-header [headerId]="'reportsHeaderText'" [headerText]="'Reports'" [buttonText]="'View Details'" [buttonId]="'viewReportDetailsBtn'" [iconClass]="'icon-setting'" (action)="navigate()">
+    </omni-card-header>
+    <div class="report-details__schedule schedule">
+      <h4 class="header-text">Report Schedule</h4>
+      <div class="schedule__details" *ngIf="(reportState$|async).reportSchedule.timezone">
+        <div fxFlex="40">
+          <h6 class="display-inline">Time Zone</h6>
+          <h5 class="schedule__details__text">{{(reportState$|async).reportSchedule.timezone}}</h5>
+        </div>
+        <div fxFlex="40">
+          <h6 class="display-inline">Delivery Time Window</h6>
+          <h5 class="schedule__details__text">{{(reportState$|async).reportSchedule.startTime}} - {{(reportState$|async).reportSchedule.deliverByTime}}</h5>
+        </div>
+        <div fxFlex="20" class="schedule__details__status status">
+          <h5 *ngIf="(reportState$|async).reportSchedule.status === 'Active'" class="display-inline status__active">Active</h5>
+          <h5 *ngIf="(reportState$|async).reportSchedule.status === 'Paused'" class="display-inline status__pasued">Paused</h5>
+        </div>
+      </div>
+      <div class="message-section">
+        <h4 *ngIf="(reportState$|async).scheduleLoaded && !(reportState$|async).reportSchedule.timezone" class="display-inline">Report schedule not created</h4>
+      </div>
+    </div>
+    <div class="report-details__divider"></div>
+    <div class="report-details__settings settings">
+      <h4 class="header-text">Report Settings</h4>
+      <div class="settings__details" *ngIf="(reportState$|async).reportSettings.timezone">
+        <div class="row--padding">
+          <div fxFlex="50">
+            <h6 class="display-inline">Report Time Zone</h6>
+            <h5 class="settings__details__text">{{(reportState$|async).reportSettings.timezone}}</h5>
+          </div>
+          <div fxFlex="50">
+            <h6 class="display-inline">Page Default CTN</h6>
+            <h5 class="settings__details__text">{{(reportState$|async).reportSettings.defaultCTN}}</h5>
+          </div>
+        </div>
+        <div class="row--padding">
+          <div fxFlex="50">
+            <h6 class="display-inline">Call Duration Threshold (seconds)</h6>
+            <h5 class="settings__details__text">{{(reportState$|async).reportSettings.callDuration}}</h5>
+          </div>
+          <div fxFlex="50">
+            <h6 class="display-inline">Conversion Source</h6>
+            <h5 class="settings__details__text">{{(reportState$|async).reportSettings.conversionSource}}</h5>
+          </div>
+        </div>
+        <div>
+          <div fxFlex="50">
+            <h6 class="display-inline">Click to Call Only</h6>
+            <h5 *ngIf="(reportState$|async).reportSettings.clickToCall" class="settings__details__text">True</h5>
+            <h5 *ngIf="!(reportState$|async).reportSettings.clickToCall" class="settings__details__text">False</h5>
+          </div>
+        </div>
+      </div>
+      <div class="message-section">
+        <h4 *ngIf="(reportState$|async).settingLoaded && !(reportState$|async).reportSettings.timezone" class="display-inline">Report settings not created</h4>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="none" fxFlex="30" class="download-report">
+    <div class="text-align-center download-report__icon icon">
+      <img class="icon--size" src="assets/images/search-analytics/download-report.png">
+    </div>
+    <div class="download-report__date date">
+      <div fxFlex="50" class="date__start">
+        <mat-form-field>
+          <input matInput [matDatepicker]="reportStartDate" placeholder="Start Date" [max]="endDate" [(ngModel)]="startDate">
+          <mat-datepicker-toggle matSuffix [for]="reportStartDate"></mat-datepicker-toggle>
+          <mat-datepicker #reportStartDate></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div fxFlex="50">
+        <mat-form-field>
+          <input matInput [min]="startDate" [matDatepicker]="reportEndDate" placeholder="End Date" [(ngModel)]="endDate">
+          <mat-datepicker-toggle matSuffix [for]="reportEndDate"></mat-datepicker-toggle>
+          <mat-datepicker #reportEndDate></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </div>
+    <mat-form-field>
+      <mat-select placeholder="Choose a Platform" [(ngModel)]="reportPlatform">
+        <mat-option *ngFor="let platform of (reportState$|async).reportPlatforms.linkedReportPlatforms" [value]="platform">
+          {{ platform }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="text-align-right download-report__button-section">
+      <button mat-button class="download-button" (click)="downloadReport()" [ngClass]="{'disabled' : !(startDate && endDate && reportPlatform)}">
+        <h4>Download Report</h4>
+      </button>
+    </div>
+  </div>
+</div>

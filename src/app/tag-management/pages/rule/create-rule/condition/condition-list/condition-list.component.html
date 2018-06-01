@@ -1,0 +1,30 @@
+<div class="column-heading">
+  <div fxFlex="90">
+    <h3 class="column-heading__h3">
+      Conditions
+    </h3>
+  </div>
+  <div fxFlex="10" [ngClass]="{'hide': !(selectedRefdom$ | async)}">
+    <span (click)="openCreateRuleWizard()" class="column-heading__icon icon-plus"></span>
+  </div>
+</div>
+
+<div cdkScrollable class="rule-config__conditions-list-column">
+  <div *ngFor="let condition of conditions;let index=index">
+    <mat-card (click)="setCurrentCondition(condition)" [ngClass]="{'selected': condition.graphId == (selectedCondition$ | async)}" 
+      class="no-padding rule-config__condition-list condition-list">
+      <div fxFlex="68" class="condition-list__condition-details">
+        <h3 class="rule-config__condition-list__condition-source">Source</h3>
+        <h5 class="rule-config__condition-list__condition-search-parameter text-ellipsis">{{translateSource(condition.source)}}</h5>
+        <h3 class="rule-config__condition-list__condition-source" *ngIf="condition.searchParameters">{{condition.source == 'cookie' ? 'Cookie Name' : 'Parameter Name' }}</h3>
+        <h5 class="rule-config__condition-list__condition-search-parameter text-ellipsis" *ngIf="condition.searchParameters">{{condition.searchParameters}}</h5>
+      </div>
+      <div fxFlex="32" class="rule-config__condition-list__icon-margin rule-config__condition-list__buttons">
+        <span (click)="openConditionsDialog(condition)" class="rule-config__condition-list__icon icon-edit"></span>
+        <span class="rule-config__condition-list__icon icon-delete" (click)="deleteCondition(condition)"></span>
+        <span class="icon-arrow-right rule-config__condition-list__icon rule-config__condition-list__arrow-icon"></span>
+      </div>
+    </mat-card>
+  </div>
+  <h5 [ngClass]="{'hide': (selectedRefdom$ | async)}" class="text-align-center">Please include a refdom to add a condition.</h5>
+</div>

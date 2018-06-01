@@ -1,0 +1,66 @@
+<div class="rule-list" fxLayout="column" fxLayoutAlign="start center">
+  <div class="rule-list-page-wrapper">
+    <div class="rule-list__header">
+      <div class="rule-list__header__bcrumb bcrumb" fxFlex="75">
+        <h2 class="bcrumb__title">Ruleset</h2>
+      </div>
+      <div class="rule-list__header__tag-feature text-align-right" fxFlex="25">
+        <button class="rule-list__header__tag-feature__button" (click)="openTagFeaturesModal()">
+          <h5 class="display-inline">Tag Features</h5>
+        </button>
+      </div>
+    </div>
+
+    <div class="rule-list__search-section search-section">
+      <div fxFlex="62" class="search-section__filter-section filter-section">
+        <input fxFlex class="filter-section__input-with-icon" placeholder="Search For Rule" [formControl]="term">
+        <span class="icon-search-analytics filter-section__input-icon"></span>
+      </div>
+      <div fxFlex="20" class="search-section__create-rule-button text-align-right">
+        <button (click)="openCreateRuleDialog()">
+          <span class="icon-plus"></span> <h5 class="display-inline">Create Rule</h5>
+        </button>
+      </div>
+      <div fxFlex="18" class="search-section__code-snippet-button text-align-right">
+        <button (click)="openCodeSnippetModal()">
+          <h5 class="display-inline">Code Snippet</h5>
+        </button>
+      </div>
+    </div>
+
+    <div class="rule-list__list-section list-section content-width">
+      <mat-card *ngFor="let rule of (rulesetState$|async).rulesets.rules" class="text-align-left list-section__rule-section rule-section">
+        <div fxFlex="100" fxLayoutAlign=" center" >
+          <div fxFlex="23" class="rule-section__rule-name">
+            <a class="edit-rule" (click)="selectRule(rule)">{{rule.name}}</a>
+          </div>
+
+          <div fxFlex="20" class="rule-section__switching-icon">
+            <span class="icon-switching icon"></span>
+          </div>
+
+          <div fxFlex="47" class="rule-section__campaign-name">
+            <span matTooltip="{{getCmapignName(rule.campaignId)}}" [matTooltipPosition]="'above'">{{getCmapignName(rule.campaignId)}}</span>
+          </div>
+
+          <div fxFlex="10" class="rule-section__delete-rule">
+            <a class="rule-delete-button" (click)="deleteConfirmation(rule)">
+              <span class="icon-delete"></span>
+              <h6 class="display-inline">Delete</h6>
+            </a>
+          </div>
+        </div>
+      </mat-card>
+      <mat-card class="list-section__loading-info-text" *ngIf="(rulesetState$|async).loading && !(rulesetState$|async).rulesets.total_items">
+        <h4 class="display-inline">Fetching Rules...</h4>
+      </mat-card>
+      <mat-card class="list-section__loading-info-text" *ngIf="(rulesetState$|async).loaded && !(rulesetState$|async).rulesets.total_items">
+        <h4 class="display-inline">No Rules Found</h4>
+      </mat-card>
+    </div>
+    <div class="pagination" *ngIf="(rulesetState$|async).rulesets.total_items > 10">
+      <mat-paginator [length]="(rulesetState$|async).rulesets.total_items" [pageSizeOptions]="[10, 20, 50]" [pageSize]="limit"
+        [pageIndex]="offset" (page)="paginate($event)"></mat-paginator>
+    </div>
+  </div>
+</div>

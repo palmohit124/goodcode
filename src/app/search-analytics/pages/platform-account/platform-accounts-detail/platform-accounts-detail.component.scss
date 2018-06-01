@@ -1,0 +1,93 @@
+.platform-account-deatils {
+
+  mat-card {
+    padding: 0px;
+    border: solid 1px #DADADA;
+    box-shadow: 0 0px 1px 0px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    border-radius: 5px;
+    margin-bottom: 30px;
+
+    .message-section {
+      text-align: center;
+      color: #757373;
+      margin-top: 15px;
+      margin-bottom: 20px;
+    }
+      
+    .account {
+      padding: 0 40px 30px 40px;
+      min-height: 40px;      
+
+      &-text {
+        color: #38B7EC;
+        margin-top: 0px;
+        font-size: 15px;
+      }
+  
+      &__table {
+        color: #bfbdbd;
+  
+        &__row {
+          padding-top: 15px;
+          padding-bottom: 15px;
+  
+          &--child-border {
+            border-top: solid 1px #EFECEC;
+          }
+        }
+  
+        &-block {
+          margin: auto;
+          color: #5E6061;
+        }
+
+        &-padding {
+          padding-left: 20px;
+          padding-right: 20px;
+        }
+        
+        &__link-section {
+          margin: auto;
+  
+          &--link {
+            padding-top: 10px;
+            color: #0B97EB;
+            cursor: pointer;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+  
+    &.child-section {
+      .account {
+        min-height: 200px; 
+        padding: 0 40px 0 40px;  
+      }
+    }
+
+    .account__pagination {
+      width: 180px;
+      height: 50px;
+      margin: auto;
+      margin-right: 20px;
+      padding-bottom: 20px;
+    
+      mat-paginator {
+    
+        &.mat-paginator {
+          background-color: #FAFAFA;
+          min-height: 50px;
+        }
+    
+        .mat-paginator-page-size {
+          display: none;
+        }
+        
+        .mat-paginator-range-label {
+          margin: 0 10px;
+        }
+      }
+    }
+  }
+}

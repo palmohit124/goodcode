@@ -1,0 +1,10 @@
+.git/
+
+node_modules/
+docker/
+
+src/
+e2e/
+
+dist/conf/
+build-and-run-in-docker.sh

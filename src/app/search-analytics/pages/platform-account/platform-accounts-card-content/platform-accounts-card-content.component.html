@@ -1,0 +1,64 @@
+<div fxLayout="column" fxLayoutAlign=" none" class="platform-account">
+  <omni-card-header [headerText]="'Linked Platform Accounts'" [iconClass]="'icon-setting'" [buttonText]="'View Details'" (action)="navigate()"
+    class="platform-account__card-header-pattern-section"></omni-card-header>
+  <omni-search (search)="search($event)" class="platform-account__account-searchbar-section"></omni-search>
+  <div class="platform-account__body">
+    <div class="platform-account__message-section">
+      <h4 *ngIf="(platformAccountState$|async).loaded && !(platformAccountState$|async).linkedAccounts.parent" class="display-inline platform-account__message-section--padding">There are no linked platform accounts</h4>
+    </div>
+    <div class="platform-account__account-list" *ngIf="(platformAccountState$|async).linkedAccounts.parent">
+      <div class="linked-account">
+        <h4 class="linked-account-text">Parent Account</h4>
+        <div class="linked-account__table">
+          <div class="linked-account__table-padding linked-account__table__parent-element">
+            <div fxFlex="45">
+              <h6 class="display-inline">Name</h6>
+              <h5 class="linked-account__table-block">{{(platformAccountState$|async).linkedAccounts.parent.name}}</h5>
+            </div>
+            <div fxFlex="45">
+              <h6 class="display-inline">ID</h6>
+              <h5 class="linked-account__table-block">{{(platformAccountState$|async).linkedAccounts.parent.platformId}}</h5>
+            </div>
+            <div fxFlex="10" class="linked-account__table__link-section">
+              <a target="mca" href="https://www.marchex.io/account/admin?acc={{(platformAccountState$|async).linkedAccounts.parent.platformId}}"
+                class="linked-account__table__link-section--link">
+                <h6 class="display-inline">Open in MCA</h6>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="linked-account">
+        <h4 class="linked-account-text">Child Account</h4>
+        <div class="platform-account__message-section">
+          <h4 *ngIf="(platformAccountState$|async).loaded && (platformAccountState$|async).linkedAccounts.total_items <= 0" class="display-inline platform-account__message-section--padding">No linked child platform accounts found</h4>
+          <h4 *ngIf="(platformAccountState$|async).loading && (platformAccountState$|async).linkedAccounts.total_items <= 0" class="display-inline platform-account__message-section--padding">Fetching child platform accounts</h4>
+        </div>
+        <div fxLayout="column" fxLayoutAlign=" none" class="linked-account__table">
+          <div *ngFor="let account of (platformAccountState$|async).linkedAccounts.children; let i = index" class="linked-account__table__row linked-account__table__row--child-border"
+            [ngClass]="{'linked-account__table__row--child-border': i != 0}">
+            <div class="linked-account__table-padding">
+              <div fxFlex="45">
+                <h6 class="display-inline">Name</h6>
+                <h5 class="linked-account__table-block">{{account.name}}</h5>
+              </div>
+              <div fxFlex="45">
+                <h6 class="display-inline">ID</h6>
+                <h5 class="linked-account__table-block">{{account.platformId}}</h5>
+              </div>
+              <div fxFlex="10" class="linked-account__table__link-section">
+                <a target="mca" href="https://www.marchex.io/account/admin?acc={{account.platformId}}" class="linked-account__table__link-section--link">
+                  <h6 class="display-inline">Open in MCA</h6>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="platform-account__pagination" *ngIf="(platformAccountState$|async).linkedAccounts.total_items > limit">
+    <mat-paginator [length]="(platformAccountState$|async).linkedAccounts.total_items" [pageSize]="limit" [pageIndex]="pageIndex"
+      (page)="paginate($event)"></mat-paginator>
+  </div>
+</div>

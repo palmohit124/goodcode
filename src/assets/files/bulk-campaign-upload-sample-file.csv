@@ -1,0 +1,9 @@
+Search Partner,Search Account Id,Search Campaign Name,Search Campaign Id,Platform Account Id,Pool Platform Account Id,NPA,Forward To Number,Enable Call Recording,Business Hours Playfile Id,After Hours Playfile Id,Device Type,Call Only (Bing),Display Type (Bing),Number Pool (Bing)
+Bing,40004060,Campaign name 1,987493,CtjSZlP-e_YC0wDF,CtjSZlP-e6sB6gBQ,855,1-205-523-4789,true,ghjTgfed3fgFljkosd9,oLgSZFD8O6ZLMedO,Mobile,true,SmartPhone
+Bing,40004060,Campaign name 2,,CtjSZlP-e_YC0wDF,CtjSZlP-e6sB6gBQ,800,1-205-523-4789,false,,,Mobile,false,AllDevices,TollFree
+Bing,40004060,,5463547,CtjSZlP-e_YC0wDF,CtjSZlP-e6sB6gBQ,866,1-205-523-4789,true,oLgSZFD8O6ZLMedO,ghjTgfed3fgFljkosd9,Mobile,true,AllDevices,Local
+Google,15466,Campaign name 3,88886,Ca6plkwINq9WSAD5,Cazisc345reWsyc,877,1-425-234-5678,false,,,Mobile
+Google,7774545,Campaign name 4,2433453,Ctj7tyere90g78HGf,Catjdm9hfew7jcdf,844,1-506-234-5445,true,ghjTgfed3fgFljkosd9,ujuur9Jhsd0oJgPj,Desktop
+Google,7774545,Campaign name 4,2433453,Ctj7tyere90g78HGf,Catjdm9hfew7jcdf,844,1-506-234-5445,true,ghjTgfed3fgFljkosd9,ujuur9Jhsd0oJgPj,Desktop
+Google,123-456-7890,Campaign name 4,2433453,Ctj7tyere90g78HGf,Catjdm9hfew7jcdf,844,1-202-678-8000,true,ghjTgfed3fgFljkosd9,ujuur9Jhsd0oJgPj,Mobile
+Google,34563,,99988,Ca7tykwWCfgRFTJ8,CaHdm3vfDh7jcdh,844,1-425-234-9999,false,,,Mobile

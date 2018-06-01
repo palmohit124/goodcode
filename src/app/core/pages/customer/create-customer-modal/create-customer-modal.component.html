@@ -1,0 +1,26 @@
+<div class="create-customer" fxLayout="column" fxLayoutAlign="none">
+  <div>
+    <div fxFlex="50" class="text-align-left">
+      <img class="text-align-left" src="assets/logo/marchex-logo-modal.png">
+    </div>
+    <div fxFlex="50" class="text-align-right close-section">
+      <img (click)="dialogRef.close()" class="text-align-left close-button" src="assets/images/customer/cross.png">
+    </div>
+  </div>
+  <div class="text-align-center customer-illustration-section">
+    <img src="assets/images/customer/illustration.png">
+  </div>
+  <div class="text-align-center create-customer-info">
+    <h4 class="display-inline">Create New Customer</h4>
+    <br>
+    <h6 class="info-text display-inline">( The name must have 2 characters. It may contain symbols, numbers or speacial characters )</h6>
+  </div>
+  <div class="text-align-center customer-name-section">
+    <mat-form-field class="name-input">
+      <input matInput placeholder="Name" [(ngModel)]="customerName">
+    </mat-form-field>
+  </div>
+  <div class="text-align-center customer-create-button-section">
+    <button mat-button class="create-button" (click)="createCustomer()" [disabled]="customerName.trim().length < 2"><h3>CREATE CUSTOMER</h3></button>
+  </div>
+</div>

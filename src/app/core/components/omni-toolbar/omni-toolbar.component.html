@@ -1,0 +1,31 @@
+<header class="header" fxFlex>
+  <div fxFill fxLayout="row" fxLayoutAlign="start start">
+    <div fxFlex="100" fxLayout="row" fxLayoutAlign="start center" class="header__wrapper">
+
+      <div fxFlex="20" class="header__logo" fxLayout="row" fxLayoutAlign="start end">
+        <a routerLink="/">
+          <img src="./assets/logo/marchex-wordmark-white-small.png">
+        </a>
+      </div>
+
+      <div fxFlex="45" fxLayout="row" fxLayoutAlign="start start" class="customer-wrapper">
+        <p class="label">Search Analytics</p>
+      </div>
+
+      <div fxFlex="34" class="header__user-info" fxLayout="row" fxLayoutAlign="end center">
+        <img class="avatar" [src]="user?.picture">
+        <div class="username-wrapper" rfxhide fxShow.gt-sm>
+          <h3 class="display-inline" [matMenuTriggerFor]="menu">
+            <span id="displayUserName" class="username">{{user?.name}}</span>
+            <span class="icon-arrow-down"></span>
+          </h3>
+          <mat-menu #menu="matMenu" class="mat-menu-item-button" [class]="'search-logout'">
+            <button (click)="logout($event)" mat-menu-item>
+              <span>Logout</span>
+            </button>
+          </mat-menu>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,51 @@
+.card-header-pattern{
+  margin-top: 15px;
+  margin-bottom: 15px;
+  
+  .header-text {
+    margin-left: 20px;
+    margin-right: 20px;
+    
+    .header-text-content {
+      color: #848181;
+      font-weight: lighter;
+    }
+  }
+
+  .header-line-section {
+    margin-top: 12px;
+    text-align: right;
+    border-top: #E2DFDD 1px solid;
+
+    .details-button {
+      position: relative;
+      top: -15px;
+      right: 30px;
+      outline: none;
+      border-radius: 5px;
+      border: 1px solid #c4e1ae;
+      height: 30px;
+      background-color: #fafafb;
+      cursor: pointer;
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 4px;
+
+      &.disable {
+        pointer-events: none;
+        border-color: #E2DFDD;
+        color: #cccccb;
+      }
+
+      span {
+        margin-right: 7px;
+        font-weight: bold;
+      }
+
+      h6 {
+        position: relative;
+        top: -2px;
+      }
+    }
+  }
+}

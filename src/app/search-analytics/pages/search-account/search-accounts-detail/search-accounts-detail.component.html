@@ -1,0 +1,51 @@
+<div class="search-account-deatils">
+  <div class="back-page-link back-page-link" routerLink="/search-analytics">
+    <span class="icon-arrow-left icon-font"></span>
+    <h6 class="display-inline">Back to Previous Page</h6>
+  </div>
+  <mat-card class="onboard-account-card">
+    <omni-search-integration-list fxLayout="column" fxLayoutAlign="none" fxFlex="40" (integrationSelected)="selectedIntegrationEvent($event)"></omni-search-integration-list>
+    <div class="search-account-section" fxLayout="column" fxLayoutAlign="none" fxFlex="60">
+      <omni-card-header [headerText]="'Available Accounts'"></omni-card-header>
+      <div class="search-account-body">
+        <h4 class="search-account-body--text" *ngIf="selectedIntegration.id != '0'">For Integration:</h4>
+        <h5 class="search-account-body--integration-text">{{selectedIntegration.name}}</h5>
+        <div class="search-account-body__searchbar">
+          <omni-search (search)="search($event)"></omni-search>
+        </div>
+        <div class="search-account-body__section">
+          <div class="search-account-body__message-section">
+            <h4 *ngIf="(searchAccountState$|async).loading && !(searchAccountState$|async).searchAccounts.total_items" class="display-inline">Fetching Search Accounts</h4>
+            <h4 *ngIf="(searchAccountState$|async).loaded && !(searchAccountState$|async).searchAccounts.total_items" class="display-inline">No search accounts found</h4>
+          </div>
+          <div fxLayout="column" fxLayoutAlign="none" class="search-account-body__account-list account-list">
+            <div *ngFor="let account of (searchAccountState$|async).searchAccounts.accounts; let i = index" class="account-list__row"
+              [ngClass]="{'account-list__row--border': i != 0}">
+              <div fxFlex="20" fxFlexAlign="center" class="account-list__row__checkbox-block">
+                <mat-checkbox (change)="onCheckboxSelect(account, $event.checked)" [checked]="isAccountSelected(account)"></mat-checkbox>
+              </div>
+              <div fxFlex="60">
+                <h6 class="display-inline">Account Name</h6>
+                <h5 class="account-list__row--item">{{account.name}}</h5>
+              </div>
+              <div fxFlex="20">
+                <h6 class="display-inline">Account ID</h6>
+                <h5 class="account-list__row--item">{{account.sourceId}}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="search-account-body__footer-section">
+          <div class="pagination-section">
+            <mat-paginator *ngIf="(searchAccountState$|async).searchAccounts.total_items > limit" [length]="(searchAccountState$|async).searchAccounts.total_items" [pageSize]="limit" [pageIndex]="pageIndex" (page)="paginate($event)"></mat-paginator>
+          </div>
+          <div class="text-align-right button-section" *ngIf="(searchAccountState$|async).searchAccounts.total_items">
+            <button mat-button class="onboard-button" [disabled]="!selectedSearchAccounts.length" (click)="linkAccountsInit()">
+              <h4>Onboard Accounts</h4>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>

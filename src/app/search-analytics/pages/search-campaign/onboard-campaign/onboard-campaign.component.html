@@ -1,0 +1,35 @@
+<div class="onboard-campaign">
+  <div>
+    <h4 class="onboard-campaign__title-text">Onboard Campaigns In Bulk</h4>
+    <a class="onboard-campaign__download-sample-file-btn" href="assets/files/bulk-campaign-upload-sample-file.csv">
+      <span class="icon-download"></span>
+      Download Sample File
+    </a>
+  </div>
+  <h6 class="display-inline onboard-campaign__sub-text">Provide platform integration and select file for upload</h6>
+  <div class="onboard-campaign__form form">
+    <form [formGroup]="campaignsUploadForm" (ngSubmit)="onFileSubmit(campaignsUploadForm.value)" #onboardCampaign="ngForm" fxFlex.md="50" fxLayout.md="column" fxLayout.sm="column" fxLayout.xs="column" fxLayout="row">
+      <mat-form-field class="form__input--padding" fxFlex="27">
+        <input matInput type="text" placeholder="Email ID" formControlName="emailId" autocomplete="new-password">
+      </mat-form-field>
+      <mat-form-field class="form__input--padding" fxFlex="27">
+        <input matInput type="password" placeholder="Password" formControlName="password" autocomplete="new-password">
+      </mat-form-field>
+      <div fxFlex="27" class="form__input--padding">
+        <span *ngIf="fileToUpload" class="form__upload-file-text">Upload File</span>
+        <button type="button" class="form__upload-file-btn" [ngClass]="{'selected': fileToUpload}" (click)="onboardCampaignFileInput.click()">
+          <span class="form__upload-file-name" fxFlex="95">
+            {{fileToUpload ? fileToUpload.name : 'Upload File'}}
+          </span>
+          <span class="icon-upload-file" fxFlex="5"></span>
+        </button>
+        <input hidden type="file" #onboardCampaignFileInput accept=".csv" (change)="onboardCampaignFile($event)"/>
+      </div>
+      <div fxFlex >
+        <button class="form__upload-btn" [ngClass]="{'disabled': !fileToUpload}">
+          <h4 class="form__upload-button-text">Upload File</h4>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

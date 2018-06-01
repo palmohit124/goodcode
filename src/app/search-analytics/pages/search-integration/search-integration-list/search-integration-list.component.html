@@ -1,0 +1,56 @@
+<div class="search-integration" fxLayout="column" fxLayoutAlign="none">
+  <omni-card-header [headerText]="'Add Integrations'"></omni-card-header>
+  <div class="search-integration__add-integration" [matMenuTriggerFor]="menu">
+    <span class="icon-plus"></span>
+  </div>
+  <mat-menu #menu="matMenu" class="search-integration__integration-menu" fxLayout="row" [xPosition]="'before'">
+    <button mat-menu-item (click)="createIntegration('adwords')">
+      <div fxFlex="20" class="search-integration__integration-menu-icon-section">
+        <img class="search-integration__integration-menu-icon" src="assets/images/search-analytics/google.png">
+      </div>
+      <div fxFlex="80" class="menu-text-block">
+        <h5 class="menu-text">Google</h5>
+      </div>
+    </button>
+    <button mat-menu-item (click)="createIntegration('bingads')">
+      <div fxFlex="20" class="search-integration__integration-menu-icon-section">
+        <img class="search-integration__integration-menu-icon" src="assets/images/search-analytics/bing.png">
+      </div>
+      <div fxFlex="80" class="menu-text-block">
+        <h5 class="menu-text">Bing</h5>
+      </div>
+    </button>
+  </mat-menu>
+  <div class="search-integration__message-section">
+    <h4 *ngIf="(searchIntegrationState$|async).loading && !(searchIntegrationState$|async).searchIntegrations.total_items" class="display-inline">Fetching Search Integrations</h4>
+    <h4 *ngIf="(searchIntegrationState$|async).loaded && !(searchIntegrationState$|async).searchIntegrations.total_items" class="display-inline">No search integrations found</h4>
+  </div>
+  <div class="search-integration__integration-section">
+    <h4 class="integration-text" *ngIf="(searchIntegrationState$|async).searchIntegrations.total_items">Available Integrations</h4>
+    <div fxLayout="column" fxLayoutAlign="none" class="integration-list">
+      <mat-radio-group [(value)]="selectedIntegration.id">
+        <div *ngFor="let integration of (searchIntegrationState$|async).searchIntegrations.integrations; let i = index" class="integration-list__row"
+          [ngClass]="{'integration-list__row--border': i != 0}">
+          <div fxFlex="10" class="integration-list__row__radio-button">
+            <mat-radio-button (change)="onIntegrationSelect(integration)" [value]="integration.id"></mat-radio-button>
+          </div>
+          <div fxFlex="10" class="integration-list__row__source-icon">
+            <img *ngIf="integration.source == 'bingads'" class="bing-icon" [src]="selectedIntegration.id != integration.id ? 'assets/images/search-analytics/bing-grey.png' : 'assets/images/search-analytics/bing.png'">
+            <img *ngIf="integration.source == 'adwords'" class="adwords-icon" [src]="selectedIntegration.id != integration.id ? 'assets/images/search-analytics/google-grey.png' : 'assets/images/search-analytics/google.png'" >
+          </div>
+          <div fxFlex="60" class="integration-list__row__name">
+            <h6 class="display-inline" [ngClass]="{'name-text-active': selectedIntegration.id == integration.id}">Integration</h6>
+            <h5 class="name-text">{{integration.name}}</h5>
+          </div>
+          <div fxFlex="10" class="integration-list__row__delete-icon">
+            <span class="icon-delete delete-icon" (click)="removeIntegration(integration)"></span>
+          </div>
+        </div>
+      </mat-radio-group>
+    </div>
+  </div>
+  <div class="search-integration__pagination-section" *ngIf="(searchIntegrationState$|async).searchIntegrations.total_items > limit">
+    <mat-paginator class="pagination" [length]="(searchIntegrationState$|async).searchIntegrations.total_items" [pageSize]="limit" [pageIndex]="pageIndex"
+      (page)="paginate($event)"></mat-paginator>
+  </div>
+</div>

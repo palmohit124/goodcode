@@ -1,0 +1,30 @@
+.customer-edit-wrapper{
+  display: inline-block;
+  margin-bottom: 20px;
+  .customer-name-edit {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    .edit-icon {
+      cursor: pointer;
+      margin-left: 10px;
+      font-size: 0.75em;
+    }
+  }
+  .customer-name {
+    margin-top: -12px;
+    h6 {
+      font-size: 12px;
+      font-family: P22UndergroundMedium, 'Trebuchet MS';
+      margin: 0;
+      font-weight: 500;
+      a {
+        text-decoration: inherit;
+        color: inherit;
+      }
+
+      .active {
+        font-weight: bold
+      }
+    }
+  }
+}

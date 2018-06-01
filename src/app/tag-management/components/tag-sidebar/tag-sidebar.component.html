@@ -1,0 +1,31 @@
+<div fxLayout="column" fxFlex=20 *ngIf="!showSidebar" class="sidebar-show">
+  <span class="icon icon-menu" (click)="showSidebar=!showSidebar"></span>
+</div>
+
+<div fxLayout="column" fxFlex=20 class="sidebar" *ngIf="showSidebar">
+  <div class="sidebar__hide">
+    <span class="icon-back" (click)="showSidebar=!showSidebar"></span>
+  </div>
+  <ul class="sidebar__navigations">
+    <li>
+      <a><h4 class="display-inline">Dashboard</h4></a>
+    </li>
+    <li>
+      <a><h4 class="display-inline">Ad List</h4></a>
+    </li>
+    <li>
+      <a><h4 class="display-inline">Call Log</h4></a>
+    </li>
+    <li>
+      <a><h4 class="display-inline">Proxy Rewrite</h4></a>
+    </li>
+    <li>
+      <a class="active" routerLink="/tag-management/{{(accountState$|async)}}/" routerLinkActive="active">
+        <h4 class="display-inline">Rulesets</h4>
+      </a>
+    </li>
+    <li>
+      <a><h4 class="display-inline">Speech Analytics</h4></a>
+    </li>
+  </ul>
+</div>

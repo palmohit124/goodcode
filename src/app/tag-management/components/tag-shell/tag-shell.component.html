@@ -1,0 +1,11 @@
+<div class="shell-content" fxLayout="column" fxLayoutAlign="start stretch">
+  <div fxLayout="row wrap" class="main-grid">
+    <div fxFlex fxLayout="column">
+      <omni-tag-toolbar [user]="user$ | async" (logoutAction)="logout($event)"></omni-tag-toolbar>
+      <omni-tag-sidebar *ngIf="isSidenavVisible"></omni-tag-sidebar>
+      <div class="wrapper" fxFlex fxLayout="column" cdkScrollable>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

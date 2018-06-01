@@ -1,0 +1,32 @@
+<div class="create-rule-dialog" fxLayout="column">
+  <h3 class="heading-label">Create Rule</h3>
+  <br/>
+  <span class="dialog-close-icon icon-cross" (click)="createRuleDialogRef.close(true)"></span>
+  <form [formGroup]="formData" (ngSubmit)="onRuleCreation()">
+    <div class="create-rule-dialog-section">
+      <mat-form-field class="display-block">
+        <input matInput placeholder="Rule Name" formControlName="name" (blur)="trimInput(formData.value)">
+        <mat-error *ngIf="formData.controls.name.errors && formData.controls.name.errors.alphaNumericOnly">
+          {{formData.controls.name.errors.alphaNumericOnly}}
+        </mat-error>
+        <mat-error *ngIf="formData.controls.name.errors && formData.controls.name.errors.lengthError">
+          {{formData.controls.name.errors.lengthError}}
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="display-block">
+        <mat-select placeholder="Assign Campaign" (change)="resetRuleAction()" formControlName="campaignId">
+          <mat-option *ngFor="let campaign of campaigns.campaigns" [value]="campaign.campaignId">
+            {{campaign.campaignName}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <mat-error *ngIf="errorMsg">
+      {{errorMsg}}
+    </mat-error>
+    <div class="create-rule-dialog__button-section">
+      <button mat-button type="button" (click)="createRuleDialogRef.close(true)" class="button cancel-button">Cancel</button>
+      <button mat-button type="submit" [ngClass]="{'disabled' : !formData.valid}" [disabled]="!formData.valid" class="button update-button">Next</button>
+    </div>
+  </form>
+</div>

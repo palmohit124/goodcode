@@ -1,0 +1,91 @@
+.search-account__card-header-pattern-section {
+  margin-top: 30px;
+}
+
+.search-account__account-searchbar-section {
+  width: 60%;
+  text-align: center;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.search-account__body {
+  min-height: 100px;
+}
+
+.search-account__list-section {
+  padding: 20px;
+  color: #bfbdbd;
+  min-height: 425px;
+
+  &__row {
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    &__item {
+      margin: 0px;
+      padding-top: 3px;
+      color: #535353;
+    }
+
+    &--border {
+      border-top: solid 1px #EFECEC;
+    }
+
+    .source-icon {
+      margin: auto;
+      padding-left: 15px;
+      padding-top: 7px;
+
+      &--bing-icon {
+        height: 20px;
+        width: 17px;
+      }
+    
+      &--adwords-icon {
+        height: 20px;
+        width: 20px;
+      }
+    }
+    
+    .unlink {
+      padding-top: 10px;
+
+      &-text {
+        cursor: pointer;
+        color: #7094EC;
+      }
+    }
+  }
+}
+
+.search-account__message-section {
+  text-align: center;
+  color: #757373;
+  margin-top: 15px;
+}
+
+.search-account__pagination-section {
+  margin-left: auto;
+  margin-right: 0;
+
+  mat-paginator {
+      
+    .mat-paginator-page-size {
+      display: none;
+    }
+
+    .mat-paginator-range-label {
+      margin: 0 10px;
+    }
+
+    &.pagination {
+      background-color: #FAFAFA;
+      min-width: 170px;
+      min-height: 45px;
+      margin-top: 15px;
+      margin-bottom: 20px;
+      margin-right: 20px;
+    }
+  }
+}

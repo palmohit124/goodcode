@@ -1,0 +1,60 @@
+<div class="onboard-status">
+  <h4 class="onboard-status__title-text">Onboarding Status</h4>
+  <div class="onboard-status__list-section">
+    <div class="onboard-status__message-section">
+      <h4 *ngIf="(searchCampaignState$|async).loading && !(searchCampaignState$|async).searchCampaignCount" class="display-inline">Fetching Campaigns</h4>
+      <h4 *ngIf="(searchCampaignState$|async).loaded && !(searchCampaignState$|async).searchCampaignCount" class="display-inline">No campaigns found</h4>
+    </div>
+    <div class="onboard-status__table table" *ngIf="(searchCampaignState$|async).searchCampaignCount">
+      <div *ngFor="let campaign of (searchCampaignState$|async).searchCampaigns; let i = index" class="table__row" [ngClass]="{'table__row--border': i != 0}">
+        <h6 class="display-inline table__row__campaign-date">{{campaign.submitTime}}</h6>
+        <div fxLayout="row" fxLayoutAlign=" none" class="table__row--padding">
+          <div fxFlex="20">
+            <h6 class="display-inline">Submitted File</h6>
+            <h5 class="table__row__item table__row__file-url">{{getFileName(campaign.submittedFileUrl)}}</h5>
+            <a href="{{getDownloadUrl(campaign.submittedFileUrl)}}" class="table__row__download download">
+              <h6 class="display-inline">
+                <span>Download File</span>
+              </h6>
+            </a>
+          </div>
+          <div fxFlex="20">
+            <h6 class="display-inline">Submitted By</h6>
+            <h5 class="table__row__item">{{campaign.submittedBy}}</h5>
+          </div>
+          <div fxFlex="20" class="table__campaign-status campaign-status">
+            <div *ngIf="campaign.status == 'In Progress'">
+              <span class="icon-inprogress campaign-status__icon-inprogress"></span>
+              <h5 class="display-inline campaign-status__inprogress-text">In Progress</h5>
+            </div>
+            <div *ngIf="campaign.status == 'Completed With Errors'">
+              <h5 class="display-inline campaign-status__error-text">Completed with error</h5>
+            </div>
+            <div *ngIf="campaign.status == 'Completed'">
+              <h5 class="display-inline campaign-status__complete-text">Completed</h5>
+            </div>
+          </div>
+          <div fxFlex="20">
+            <h6 class="display-inline">Successful Onboarding File</h6>
+            <h5 class="table__row__item">{{campaign.successRowCount}}/{{campaign.totalRowCount}}</h5>
+          </div>
+          <div fxFlex="20">
+            <div *ngIf="campaign.status == 'Completed With Errors'">
+              <h6 class="display-inline">Error Result File</h6>
+              <h5 class="table__row__item table__row__file-url">{{getFileName(campaign.errorFileUrl)}}</h5>
+              <a href="{{getDownloadUrl(campaign.submittedFileUrl)}}" class="table__row__download download">
+                <h6 class="display-inline">
+                  <span>Download File</span>
+                </h6>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="onboard-status__pagination" *ngIf="(searchCampaignState$|async).searchCampaignCount > limit">
+    <mat-paginator class="pagination" [length]="(searchCampaignState$|async).searchCampaignCount" [pageSize]="limit"
+      [pageIndex]="pageIndex" (page)="paginate($event)"></mat-paginator>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+.main-grid {
+  height: 100vh;
+  width: 100%;
+}
+
+:host {
+  .wrapper {
+    padding: 20px 50px;
+    background-color: #fafafb;
+    overflow: auto;
+    @media screen and (max-width: 960px) {
+      padding: 15px;
+    }
+    header {
+      padding: 0 10px;
+    }
+    &.wrapper-box {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  }
+}
+omni-toolbar{
+  background-color: #fafbfb;
+}

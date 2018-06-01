@@ -1,0 +1,27 @@
+<div class="conditions" fxLayout="column">
+  <span class="dialog-close-icon icon-cross" (click)="dialogRef.close(true)"></span>
+  <form [formGroup]="formData" (ngSubmit)="onDialogClose(true)">
+    <div class="conditions-section">
+      <mat-form-field class="display-block">
+        <mat-select placeholder="Source" formControlName="source">
+          <mat-option *ngFor="let source of sources;" [value]="source.key" [disabled]="isSourceDisabled(source.key)">
+            {{ source.value }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field  *ngIf=" formData.get('source').value !=='css'"  class="display-block">
+        <input matInput placeholder="{{formData.controls.source.value === 'url' ? 'Parameter Name' : 'Cookie Name'}}" formControlName="searchParameters" (blur)="trimInput(formData.value)">
+        <mat-error *ngIf="formData.controls.searchParameters.errors && formData.controls.searchParameters.errors.alphaNumericOnly">
+          {{formData.controls.searchParameters.errors.alphaNumericOnly}}
+        </mat-error>
+        <mat-error *ngIf="formData.controls.searchParameters.errors && formData.controls.searchParameters.errors.lengthError">
+          {{formData.controls.searchParameters.errors.lengthError}}
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div class="conditions__button-section">
+      <button mat-button type="button" (click)="onDialogClose(false)" class="button cancel-button">Cancel</button>
+      <button mat-button type="submit" [ngClass]="{'disabled' : !formData.valid}" [disabled]="!formData.valid" class="button update-button">Update</button>
+    </div>
+  </form>
+</div>

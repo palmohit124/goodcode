@@ -1,0 +1,42 @@
+<div class="column-heading">
+  <div fxFlex="90">
+    <h3 class="column-heading__h3">
+      Lookup
+    </h3>
+  </div>
+  <div fxFlex="10" [ngClass]="{'hide': !(selectedCondition$ | async)}">
+      <span (click)="openCreateRuleWizard()" class="column-heading__icon icon-plus"></span>
+  </div>
+</div>
+
+<div cdkScrollable class="rule-config__lookup-list-column">
+  <div *ngFor="let lookup of lookups;let index=index">
+    <mat-card [ngClass]="{'selected': lookup.graphId == (selectedLookup$ | async)}" 
+      class="rule-config__lookup-list rule-config__matcard-lookup-list rule-config__lookup-details">  
+      <div (click)="setCurrentLookup(lookup)">
+        <div fxFlex="70" *ngIf="!isEditLookupMode[index]">
+          <h3 class="rule-config__matcard-lookup-list__lookupname text-ellipsis">
+            {{lookup.lookupName}}
+          </h3>
+        </div>
+        <div fxFlex="30" class="rule-config__lookup-list__buttons" *ngIf="!isEditLookupMode[index]">
+          <span class="rule-config__matcard-lookup-list__icon icon-edit edit-rule-icon" (click)="isEditLookupMode[index]=!isEditLookupMode[index]"></span>
+          <span class="rule-config__matcard-lookup-list__icon icon-delete" (click)="deleteLookup(lookup)"></span>
+          <span class="icon-arrow-right rule-config__matcard-lookup-list__icon rule-config__matcard-lookup-list__arrow-icon"></span>
+        </div>
+        <div *ngIf="isEditLookupMode[index]">
+          <div fxFlex="70">
+            <mat-form-field>
+              <input matInput #lookupname1 placeholer="Lookup Name" value="{{lookup.lookupName}}" required>
+            </mat-form-field>
+          </div>
+          <div fxFlex="30" class="lookup-list-buttons rule-config__lookup-list__buttons text-ellipsis">
+            <span class="rule-config__matcard-lookup-list__icon icon-cross2" (click)="isEditLookupMode[index]=!isEditLookupMode[index]"></span>
+            <span class="rule-config__matcard-lookup-list__icon icon-tick" [ngClass]="{'disabled' : !lookupname1.value}" (click)="updateLookupName(lookupname1.value, lookup.graphId, index)"></span>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+  <h5 [ngClass]="{'hide': (selectedCondition$ | async)}" class="text-align-center">Please include a condition to add a lookup.</h5>
+</div>

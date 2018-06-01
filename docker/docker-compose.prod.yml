@@ -1,0 +1,16 @@
+version: '3.3'
+
+services:
+  oce-analytics-ui:
+    image: toolsnexus.marchex.com:5000/oce-analytics-ui:$OMNI_MARCHEX_IO_VERSION
+    deploy:
+      replicas: 2
+    configs:
+      - source: client-config
+        target: /usr/share/nginx/html/conf/client-config.json
+    ports:
+      - "80:80"
+
+configs:
+  client-config:
+    file: ./docker/client-config.prod.json

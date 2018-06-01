@@ -1,0 +1,28 @@
+<div class="column-heading">
+  <div fxFlex="90">
+    <h3 class="column-heading__h3">
+      Rewrite
+    </h3>
+  </div>
+  <div fxFlex="10" [ngClass]="{'hide': !(selectedLookup$ | async)}">
+    <span (click)="openCreateRuleWizard()" class="column-heading__icon icon-plus"></span>
+  </div>
+</div>
+
+<div cdkScrollable class="rule-config__rewrite-list-column">
+  <div *ngFor="let rewrite of rewrites;let index=index">
+    <mat-card class="no-padding rule-config__rewrite-list">
+      <div fxFlex="68">
+        <h3 class="rule-config__rewrite-list__rewrite-phone">Phone</h3>
+        <h5 class="rule-config__rewrite-list__rewrite-call-tracking-number">{{rewrite.value}}</h5>
+        <h3 class="rule-config__rewrite-list__rewrite-phone">Call Tracking Number</h3>
+        <h5 class="rule-config__rewrite-list__rewrite-call-tracking-number">{{rewrite.ctn}}</h5>
+      </div>
+      <div fxFlex="32" class="rule-config__rewrite-list__icon-margin rule-config__rewrite-list__buttons">
+        <span (click)="openRewritesDialog(rewrite)" class="rule-config__rewrite-list__icon icon-edit"></span>
+        <span class="rule-config__rewrite-list__icon icon-delete" (click)="deleteRewrite(rewrite)"></span>
+      </div>
+    </mat-card>
+  </div>
+  <h5 [ngClass]="{'hide': (selectedLookup$ | async)}" class="text-align-center">Please include a lookup to add a rewrite.</h5>
+</div>
